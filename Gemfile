@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 
-gem "rack"
-gem "middleman", "~>2.0.13"
+gem "rack", "~> 1.3.5"
+gem "middleman", "~> 2.0.14"
 gem 'rack-contrib'
