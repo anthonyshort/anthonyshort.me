@@ -1,0 +1,9 @@
+<article id="content" class="hentry article">
+    <h1 class="entry-title">
+      <%= current_article_title %> 
+    </h1>
+    <div class="entry-content">
+      <%= yield_content :blog_article %>
+    </div>
+    <time class="updated" pubdate>Published on <%= current_article_date.strftime('%b %e %Y') %></time>
+</article>

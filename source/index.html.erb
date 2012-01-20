@@ -1,0 +1,12 @@
+<section class="intro">
+  <p>Heya! This is a place for me to write about the things I love&hellip; Design, Javascript, The web, Apple, Japan. Ya know, cool stuff.</p>
+</section>
+
+<section class="article-index">
+  <% data.blog.articles.each_with_index do |article, i| %>
+  <article>
+    <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
+    <time><%= article.date.strftime('%b %e') %></time>
+  </article>
+  <% end %>
+</section>
