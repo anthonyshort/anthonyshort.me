@@ -1,3 +1,5 @@
+activate :blog
+
 ### 
 # Compass
 ###
@@ -69,10 +71,11 @@
 # set :images_dir, "alternative_image_directory"
 
 set :blog_permalink, ":year/:title.html"
+page "/feed.xml", :layout => false
 
 # Build-specific configuration
 configure :build do
-  activate :blog
+
   # For example, change the Compass output style for deployment
   # activate :minify_css
   
