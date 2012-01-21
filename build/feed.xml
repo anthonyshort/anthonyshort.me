@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Anthony Short</title>
+  <subtitle>Designer and Frond-End Developer</subtitle>
+  <id>http://anthonyshort.me/</id>
+  <link href="http://anthonyshort.me/"/>
+  <link href="http://anthonyshort.me/feed.xml" rel="self"/>
+  <updated>2012-01-21T00:00:00+11:00</updated>
+  <author>
+    <name>Anthony Short</name>
+  </author>
+  <entry>
+    <title>Hello World</title>
+    <link rel="alternate" href="/2012/hello-world.html"/>
+    <id>/2012/hello-world.html</id>
+    <published>2012-01-21T00:00:00+11:00</published>
+    <updated>2012-01-21T00:00:00+11:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;p&gt;So I&amp;#8217;ve finally managed to put a blog together. It&amp;#8217;s only taken 5 years, dozens of design iterations and now finally I think I have something I can work with. I&amp;#8217;m headed to Japan in a couple of days and decided that this was definitely something I wanted to record somehow. I couldn&amp;#8217;t let this opportunity go to waste.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;So I&amp;#8217;ve finally managed to put a blog together. It&amp;#8217;s only taken 5 years, dozens of design iterations and now finally I think I have something I can work with. I&amp;#8217;m headed to Japan in a couple of days and decided that this was definitely something I wanted to record somehow. I couldn&amp;#8217;t let this opportunity go to waste.&lt;/p&gt;
+
+&lt;p&gt;So I put my mind to it and put this site together in probably 3 hours from start to finish. No Photoshop, just plain HTML. I didn&amp;#8217;t use Sass or Coffeescript. I didn&amp;#8217;t think about design. I just wanted something that would let me write down my thoughts and post funny cat pictures.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m really sick of designs that include icons everywhere. Fancy javascript widgets. Sidebars with links all over the place. People come to blogs to read. That&amp;#8217;s what we should be giving them. I think I&amp;#8217;ve done a bit better in that regard. One thing I am realising as I&amp;#8217;m putting together this quick first blog post is that I definitely need to practice writing more often. Hopefully writing on this blog every week will turn my caveman ranting into intellectual observations about life and the web industry.&lt;/p&gt;
+
+&lt;p&gt;Or maybe it will just end up being photos of cats.&lt;/p&gt;</content>
+  </entry>
+</feed>

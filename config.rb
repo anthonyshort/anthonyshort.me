@@ -1,3 +1,5 @@
+require 'builder'
+
 activate :blog
 
 ### 
