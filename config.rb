@@ -72,7 +72,7 @@ activate :blog
 # Change the images directory
 # set :images_dir, "alternative_image_directory"
 
-set :blog_permalink, ":year/:title.html"
+set :blog_permalink, ":year/:month/:title.html"
 page "/feed.xml", :layout => false
 
 # Build-specific configuration
