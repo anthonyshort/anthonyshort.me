@@ -11,7 +11,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   data.blog.articles.each do |article|
     xml.entry do
       xml.title article.title
-      xml.link "rel" => "alternate", "href" => article.url
+      xml.link "rel" => "alternate", "href" => article.url.sub('.html','')
       xml.id article.url
       xml.published article.date.to_time.iso8601
       xml.updated article.date.to_time.iso8601
