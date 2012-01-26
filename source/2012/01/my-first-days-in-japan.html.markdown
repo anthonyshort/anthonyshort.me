@@ -21,7 +21,7 @@ We had a bit of time to kill in Sapporo because the trains to Furano were cancel
 	<figcaption>A blunt shuriken I bought in Sapporo. Hopefully this gets through customs.</figcaption>
 </figure>
 
-We traveled to Furano and met up with the rest of the guys staying at the house and went out for dinner at a restaurant named Sai that had a bbq grill in the centre of each table for cooking your own food. We had deer, pork, beef and various flavours of was I'm assuming was intestines. Two bottles of sake later and much meat consumed we ventured out to the local bar called Bridge Bar.
+We traveled to Furano and met up with the rest of the guys staying at the house and went out for dinner at a restaurant named Sai that had a bbq grill in the centre of each table for cooking your own food. We had deer, pork, beef and what I'm assuming was intestines. Two bottles of sake later and much meat consumed we ventured out to the local bar called Bridge Bar.
 
 <figure>
 	<img src="/images/2012/01/japan-2.jpg" alt="Japanese BBQ Restaurant at Sai in Furano" />
