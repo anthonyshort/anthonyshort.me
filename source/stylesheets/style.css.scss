@@ -179,13 +179,6 @@ footer div {
   margin:45px 0;
 }
 
-.article img {
-	box-sizing:border-box;
-	width:100%;
-	margin:9px 0;
-	border:15px solid #333;
-}
-
 .article-index h2 {
 	font-size:16px;
 	margin:0;
@@ -229,4 +222,23 @@ time {
 }
 code {
   font-size:14px;
+}
+
+.article img {
+  width:100%;
+  display:block;
+}
+
+.article figure {
+  margin:24px 0;
+  
+  figcaption {
+    box-sizing:border-box;
+    color:#fff;
+    background:#333;
+    padding:10px;
+    color:#999;
+  	font-size:14px;
+  	line-height:21px;
+  }
 }
