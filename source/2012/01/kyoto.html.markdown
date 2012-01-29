@@ -3,16 +3,16 @@ title: Kyoto
 date: 2012/01/29
 ---
 
-I've spent the last two and a bit days here in Kyoto and I've fallen in love with the city. Everything about it is exactly what I expected of Japan. The streets are crowded and full of people walking down tiny alleys filled with shops, restaurants, cafés and just about anything you can imagine. Even the run-down areas in dirty alleys become alive at night. At night the city itself takes on a cyberpunk vibe with bright, colourful lights, loud incomprehensible advertising, crazy fashion and rustic building exteriors which combine with Japanese cultural elements to produce something you'd expect to see in Bladerunner or Deus Ex. It's really out of this world.
+I've spent the last two and a bit days here in Kyoto and I've fallen in love with the city. Everything about it is exactly what I expected of life in Japan. The streets are crowded and full of people walking down tiny alleys filled with shops, restaurants, cafés and more. Even the run-down areas in dirty alleys become alive at night. At night the city itself takes on a cyberpunk vibe with bright, colourful lights, loud incomprehensible advertising, crazy fashion and rustic building exteriors. This all combines with Japanese culture to produce something you'd expect to see in Bladerunner or Deus Ex. It's really out of this world.
 
 <figure>
 	<img src="/images/2012/01/kyoto-night-1.jpg" alt="Kyoto at night" />
 	<figcaption>I've just fallen into Bladerunner. Every single alley way looks like this.</figcaption>
 </figure>
 
-The sheer number of shops, alleys and Japanese culture all intermingling is what intrigues me the most. They are dozens of alleys in a couple of blocks and they are all filled with amazing and beautiful restaurants. Even down the dankest alley you might find a small, exquisitely japanese-fashioned entrance for a restaurant deep within.
+The sheer number of shops and the way the integrate their culture is what intrigues me the most. There are dozens of alleys in a couple of blocks and they are all filled with amazing and beautiful restaurants. Even down the dankest alley you might find a small, exquisitely japanese-fashioned restaurant deep within.
 
-The first afternoon I arrived I just walked around looking at the city and getting my bearings. There's so much to take in it's almost overwhelming. For dinner I wandered down an alley and found a beautiful little restaurant called the Kitchen Barbeque (I think). I was the only person in the restaurant, which is something I've been doing lately as it gives me a chance to get to know the people there. I couldn't understand the menu so I ordered the only item I could read, okonomiyaki. A japanaese-style, unsweetened pancake with vegetables, meat, japanese mayonnaise, a bbq-style sauce and bonito on top.
+The first afternoon I arrived I just walked around looking at the city and getting my bearings. There's so much to take in it's almost overwhelming. For dinner I wandered down an alley and found a little restaurant called the Kitchen Barbeque (I think). I was the only person in the restaurant. This is something I've been doing lately as it gives me a chance to get to know the people there. I couldn't understand the menu so I ordered the only item I could read, okonomiyaki. A japanaese-style, unsweetened pancake with vegetables, meat, japanese mayonnaise, a bbq-style sauce and bonito on top.
 
 <figure>
 	<img src="/images/2012/01/okonomiyaki.jpg" alt="Okonomiyaki in Kyoto" />
@@ -34,7 +34,7 @@ Next I decided to go and find the British pub so I could meet some people who co
 </figure>
 
 
-After discovering that I'd lost my bearing and had somehow crossed the river into Gion I was able to find the British pub called The HUB. Rather than drinking on my lonesome I joined up with a random group of people there who were kind enough to let me crash their gathering. It turns out they were all teaching english in Japan, which is something I've always wanted to do. So they enlightened me about the life of an english teacher in Japan. Many, many drinks later and many fun conversation had, I stumbled home.
+After discovering that I'd lost my bearings and had somehow crossed the river into Gion I was able to find the British pub called The HUB. Rather than drinking on my lonesome I joined up with a random group of people there who were kind enough to let me crash their gathering. It turns out they were all teaching english in Japan, which is something I've always wanted to do. So they enlightened me about the life of an english teacher in Japan. Many, many drinks later and many fun conversation had, I stumbled home.
 
 The next day I walked over into the old area of Gion where there are traditional Japanese streets and buildings. It was an amazing thing to behold. Not just a single street but what seemed like an entire suburb of the city was dedicated to this traditional style. It felt like I had gone back in time and took the opportunity to soak it all in.
 
@@ -64,12 +64,12 @@ On the way home I found a little shop that sold lots of sake sets which is exact
 
 <figure>
 	<img src="/images/2012/01/kenninji-2.jpg" alt="Kennin-ji Shrine" />
-	<figcaption>There were 3 girls dressed as Geisha who were happy enough to let me takes a few photos of them. They really loved the attention.</figcaption>
+	<figcaption>Outside there were beautiful gardens.</figcaption>
 </figure>
 
 <figure>
 	<img src="/images/2012/01/kenninji-5.jpg" alt="Kennin-ji Shrine" />
-	<figcaption>There were 3 girls dressed as Geisha who were happy enough to let me takes a few photos of them. They really loved the attention.</figcaption>
+	<figcaption>Inside there were tatami mats, miniature shrines and living quarters.</figcaption>
 </figure>
 
 The shrine itself was, from what I could gather, focused on the idea of the God of Storms and the God of Lightening as they were depicted everywhere. I really should have read the brochure, but just looking at the badass dragons on the roof was enough. If I could have a shrine I'd definitely put dragons in mine, so this guy must have had good taste.
@@ -84,24 +84,24 @@ The shrine itself was, from what I could gather, focused on the idea of the God 
 	<figcaption>This covered the entire roof. It was massive. Michelangelo's <em>'Creation of Adam'</em> or two badass dragons on your roof? The Japanese made the right choice.</figcaption>
 </figure>
 
-Outside the temple there were some garden covering a large area which would have been more impressive in spring. In winter the parks and gardens are so great. But I did find one a place to hang ema (wooden plaques) on which you write you wish and hang it up for the spirits to take. I wish I could read japanese just so I could see what everyone was asking for.
+Outside the temple there were some gardens covering a large area which would have been even more impressive in spring. In winter the parks and gardens are not so great. But I did find one a place to hang ema (wooden plaques) on which you write your wish and hang it up for the spirits to take. I wish I could read japanese just so I could see what everyone was asking for.
 
 <figure>
 	<img src="/images/2012/01/kenninji-6.jpg" alt="Kennin-ji Shrine" />
 	<figcaption>You can buy ema from the shrine to hang here.</figcaption>
 </figure>
 
-Dinner this night was rather entertaining. I was wandering around looking for a nice, small, traditional shop and I found one in an alley in Gion. I was the only person there and the lady who ran it didn't speak english. The restaurant was traditionally-fashioned and the only lady who worked there wore a kimono.
+Dinner this night was rather entertaining. I was wandering around looking for a nice, small, traditional shop and I found one in an alley in Gion. The restaurant was traditionally-fashioned and the only lady who worked there wore a kimono. I was the only person there and she didn't speak english.
 
 There was no english menu or any pictures of food so I was a bit stumped as to how I was going to order any food. Most of the cheaper restaurants have pictures of food on the menu and model replicas of the food on display at the front. I tried to use my best japanese and she tried to use her best english. Eventually I just asked her to pick something for me. Instead, she asked me what I'd like and then went out the back and made it for me even though it's not on the menu.
 
 While I was eating we talked about Japan, my travels, her son (who happened to be the same age) and various other things. It's surprising how well we were able to communicate with so few words. I must have made an impression because it was then she went out the back and came back with more food as a present. I figured that maybe I reminded her of her son in some way.
 
-So I continued to eat and drink, enjoying the conversation with the lovely woman, impressing her with my simple skills such as being able to say my age in japanese and knowing a few japanese words. A little while later she came back with some chips she cut up and made from scratch just for me, including tomato sauce. I was in shock at just how wonderful japanese people treat their customers and the really appreciate the small acts of kindness. I think I'll go back there tomorrow night just because she was so wonderful. It was one of the highlights of my trip.
+So I continued to eat and drink, enjoying the conversation with the lovely woman, impressing her with my simple skills such as being able to say my age in japanese and knowing a few japanese words. A little while later she came back with some chips she cut up and made from scratch just for me, including tomato sauce. I was in shock at just how wonderful japanese people treat their customers and they really appreciate small acts of kindness, like having a nice conversation. I think I'll go back there tomorrow night just because she was so wonderful. It was one of the highlights of my trip.
 
 The next day I got up early and went on a walking tour arranged by the hostel I was staying in. The two girls who ran it were from a local university and were volunteering. Only one other person showed up for the walk, a german lady (whose name I can't rememeber, I'm sorry!) who lived in China and was visiting. The small group turned out to be a great thing. The four of us explored the city and temples and became great friends after spending the entire day together. Most of the time we didn't even seem to talk about Kyoto, instead we were just getting to know each other.
 
-We walked through Gion where I had walked the previous day but they took up up through Maruyama Park and further up towards Kiyomizudera Temple. The walk up to the temple include many, many more traditional-styled terraces, shops, streets and alleyways and was even more impressive than those that I found the previous day.
+We walked through Gion where I had been the previous day but they took us up through Maruyama Park and further up towards Kiyomizudera Temple. The walk up to the temple included more traditional-styled terraces, shops, streets and alleyways and was even more impressive than those that I found the previous day.
 
 <figure>
 	<img src="/images/2012/01/gion-4.jpg" alt="Gion" />
@@ -143,7 +143,7 @@ One very interesting fact about this temple that Yumi was telling me was that it
 
 ...if you survived. 
 
-Amazing, 85% of people survived the jump, but I'm assuming their only wish at that point was to be able to walk again. Obviously they've banned this now so people are just throwing themselves off the edge.
+Amazingly, 85% of people survived the jump, but I'm assuming their only wish at that point was to be able to walk again. Obviously they've banned this now so people are just throwing themselves off the edge.
 
 <figure>
 	<img src="/images/2012/01/temple-balcony.jpg" alt="Balcony at Kiyomizudera Temple" />
@@ -184,11 +184,11 @@ You can also buy good luck charms at the shrine. I bought myself a traditional h
 	<figcaption>This area at the bottom of the temple would be amazing in Spring.</figcaption>
 </figure>
 
-And so that finished up the walking tour of Kiyomizudera Temple, but we decided that we weren't ready to leave just yet so we all went and had lunch together. I tried some uzi-soba noddles with fermented soy beans and whipped, raw egg on top. It was actually really delicious. Besides, any meal where they ask you if you have any health problems before you order the dish, must be good.
+And so that finished up the walking tour of Kiyomizudera Temple, but we decided that we weren't ready to leave just yet so we all went and had lunch together. I tried some uzi-soba noodles with fermented soy beans and whipped, raw egg on top. It was actually really delicious. Besides, any meal where they ask you if you have any health problems before you order the dish, must be good.
 
-Afterwards, I went to have a look at the Imperial Palace, but it was closed. Damn. It would probably look better in spring anyway as it's surrounded by cherry blossoms. So looks like I'm going to have to come back very, very soon.
+Afterwards, I went to have a look at the Imperial Palace, but it was closed. Damn. It would probably look better in spring anyway as it's surrounded by cherry blossoms. So looks like I'm going to have to come back soon.
 
-For dinner, I'd decided I was sick of Japanese food so I found an italian restaurant. I was surprised at how good that japanese-italian food was. Highlight of the evening though was discovering that the towel they put down at the bar when you eat there isn't for wiping your hands and face, it's for wiping the bar down when you've finished you meal. So that's why everyone has been laughing at me weird and I wipe my face with it...
+For dinner, I had decided that I was sick of Japanese food so I found an italian restaurant. I was surprised at how good that japanese-italian food was. Highlight of the evening though was discovering that the towel they put down at the bar when you eat there isn't for wiping your hands and face, it's for wiping the bar down when you've finished you meal. So that's why everyone has been laughing at me weird and I wipe my face with it...
 
 Tomorrow, I'm headed north to the rural town of Karuma for some hot spring and hiking action. I should able to hike in the woods between two towns but hopefully I don't get lost.
 
