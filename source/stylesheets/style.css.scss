@@ -152,7 +152,7 @@ footer div {
 }
 
 .article {
-	max-width:600px;
+	max-width:550px;
 	margin:63px auto;
 	padding:0 27px;
 }
@@ -240,5 +240,11 @@ code {
     color:#999;
   	font-size:14px;
   	line-height:21px;
+  	
+  	a {
+  	  color:white;
+  	  font-weight:normal;
+  	  text-decoration:underline;
+  	}
   }
 }
