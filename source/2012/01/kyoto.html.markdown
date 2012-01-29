@@ -147,7 +147,7 @@ Amazing, 85% of people survived the jump, but I'm assuming their only wish at th
 
 <figure>
 	<img src="/images/2012/01/temple-balcony.jpg" alt="Balcony at Kiyomizudera Temple" />
-	<figcaption>Jump of this and try and survive.</figcaption>
+	<figcaption>Jump off this and try and survive.</figcaption>
 </figure>
 
 <figure>
@@ -167,7 +167,7 @@ Amazing, 85% of people survived the jump, but I'm assuming their only wish at th
 
 This is the only temple in Japan to also have a shrine. Up at the shrine there are two stones called the love stones. It was believed that if you could walk between the two love stones with your eyes closed and with no help that you would find love. There were a few people trying it and one girl who nearly fell down the stairs.
 
-You can also buy good luck charms at the shrine. I bought myself a traditional happiness charm was is a little bell on string. So fingers crossed that it gives me lots of happiness!
+You can also buy good luck charms at the shrine. I bought myself a traditional happiness charm which was is a little bell on string. So fingers crossed that it gives me lots of happiness!
 
 <figure>
 	<img src="/images/2012/01/love-rock.jpg" alt="Love rock at Kiyomizudera Temple" />
