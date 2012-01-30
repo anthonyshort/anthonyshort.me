@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <script type="text/javascript" src="http://use.typekit.com/ffc4cqa.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    <title>Anthony Short - Designer &amp; Front-End Developer</title>
+
+		<% if is_blog_article? %>
+			<title><%= current_article_title %> - Anthony Short</title>
+		<% else %>
+			<title>Anthony Short - Designer &amp; Front-End Developer</title>
+		<% end %>
+    
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
