@@ -41,6 +41,10 @@ The sights from the mountain as you scaled up towards the peak were amazing. I h
 When I reached the temple near the peak of the mountain it was much bigger than I had expected. The main temple in the centre was surrounding by a large open area. There were buildings on either side of it. Inside the temple, there were monks praying in long, drawn-out humming sounds. It was nice and warm inside the temple and you could see the monks kneeling in front of the altar.
 
 <figure>
+	<img src="/images/2012/01/kurama-17.jpg" alt="Kurama" />
+</figure>
+
+<figure>
 	<img src="/images/2012/01/kurama-8.jpg" alt="Kurama" />
 	<figcaption>The main temple with a giant pot of incense burning and the temple guardians.</figcaption>
 </figure>
