@@ -231,11 +231,22 @@ code {
 
 .article figure {
   margin:36px 0;
+  position:relative;
+  
+  &:hover figcaption {
+     opacity:1;
+  }
   
   figcaption {
+    -webkit-transition:opacity 0.3s linear;
+    -moz-transition:opacity 0.3s linear;
+    transition:opacity 0.3s linear;
+    position:absolute;
+    opacity:0;
+    bottom:0;
     box-sizing:border-box;
     color:#fff;
-    background:#333;
+    background:rgba(0,0,0,0.8);
     padding:10px;
     color:#999;
   	font-size:14px;
