@@ -21,7 +21,7 @@ The really interesting part of this stay was the meal. Dinner was a 10-course me
 
 <figure>
 	<img src="/images/2012/02/jozenkei-2.jpg" alt="Jozenkei foot baths" />
-	<figcaption>These kappa baths are all over the town. This is the hand basin of friendship.</figcaption>
+	<figcaption>These kappa baths are all over the town for washing your hands and feet in warm spring water. This is the hand basin of friendship.</figcaption>
 </figure>
 
 Unfortunately the town had been hit hard with snow fall the night I arrived and all of the tourist attractions of the area were completely inaccessible. The towns 'mascot' is the kappa. Which I'm assuming from all the statues everywhere is a turtle. All of the baths scattered around town had kappa statues and there were bigger kappa statues on the bridges. They remind me of Koopa Troopers. Everything about Japan is just so wacky and cutesy.
