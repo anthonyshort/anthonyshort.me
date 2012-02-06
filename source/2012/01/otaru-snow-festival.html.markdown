@@ -10,6 +10,8 @@ Over the past week I've been traveling around Hokkaido a fair bit. The novelty t
 	<figcaption>The main canal in Otaru where the snow festival was held.</figcaption>
 </figure>
 
+But first I'll explain how I finally made it to Otaru.
+
 After leaving Kyoto the first place I ventured to was Jozenkei. It's a small onsen town about hour west of Sapporo. I spent the night in a fancy, traditional hotel there and just relaxed for a while. Everything about this place made me feel out of place. It was clearly for rich, japanese people not backpacking Australians. But I was able to experience a traditional Japanese-style room with tatami mats, floor table (seems an appropriate name seeing as you sit on the floor to use it) and decor. 
 
 <figure>
