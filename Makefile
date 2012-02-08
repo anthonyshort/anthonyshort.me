@@ -1,5 +1,5 @@
 compile:
-	@@bundle exec middleman build && git add . -u && git commit -m "Build"
+	@@bundle exec middleman build && git add . && git commit -m "Build"
 
 server:
 	@@bundle exec middleman
