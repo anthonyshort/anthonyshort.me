@@ -1,4 +1,4 @@
-build:
+compile:
 	@@bundle exec middleman build
 	@@git add . -u
 	@@git commit -m "Build"
