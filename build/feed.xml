@@ -5,16 +5,97 @@
   <id>http://anthonyshort.me/</id>
   <link href="http://anthonyshort.me/"/>
   <link href="http://anthonyshort.me/feed.xml" rel="self"/>
-  <updated>2012-02-05T00:00:00+09:00</updated>
+  <updated>2012-02-11T00:00:00+11:00</updated>
   <author>
     <name>Anthony Short</name>
   </author>
   <entry>
+    <title>Syncing Models Across Views with Backbone.js</title>
+    <link rel="alternate" href="/2012/02/syncing-models-with-backbone-js"/>
+    <id>/2012/02/syncing-models-with-backbone-js.html</id>
+    <published>2012-02-11T00:00:00+11:00</published>
+    <updated>2012-02-11T00:00:00+11:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;p&gt;Over the past few months I&amp;#8217;ve been working with Backbone.js a lot. I ran into a problem recently where I needed to sync models between multiple views and collections on the page. I wanted all the views and collections to instantly update as soon as a model changed in any of them.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Over the past few months I&amp;#8217;ve been working with Backbone.js a lot. I ran into a problem recently where I needed to sync models between multiple views and collections on the page. I wanted all the views and collections to instantly update as soon as a model changed in any of them.&lt;/p&gt;
+
+&lt;p&gt;I thought of a couple of ways to approach this problem:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use the same collection in multiple views&lt;/li&gt;
+
+&lt;li&gt;Use the same model in all the views using a manager or factory&lt;/li&gt;
+
+&lt;li&gt;Have the models listening for changes on other models directly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Passing the same collection through to the different views wasn&amp;#8217;t possible because the multiple views used different data. This led me to try and create a model manager/factory to handle the creation of the models so that there would only be one instance of each model. That would require a great deal of restructuring and might not even work in the long run.&lt;/p&gt;
+
+&lt;p&gt;Over-abstracting code too early is a trap that I&amp;#8217;ve been caught in before so I went with the &lt;strong&gt;simplest&lt;/strong&gt; solution to the problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The models listen for a change event to update their attributes and broadcast an event with their own attributes when they change.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This would let me sync all the views instantly. Here&amp;#8217;s a dummy model that uses this idea. Let&amp;#8217;s assume that &lt;code&gt;Events&lt;/code&gt; is whatever event emitter you&amp;#8217;re using across the app.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Todo = Backbone.Model.extend({
+    initialize: function(options){
+
+        this.bind(&amp;#39;change&amp;#39;, function(){
+            Events.publish(&amp;#39;todo:change&amp;#39;,this);
+        }.bind(this), this);
+
+        Events.subscribe(&amp;#39;todo:change&amp;#39;,function(model){
+            if(model.id === this.id &amp;amp;&amp;amp; model !== this){
+                this.set(model.attributes);
+            }
+        }.bind(this));
+    }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is a &lt;em&gt;very&lt;/em&gt; obvious problem with this though. If a model fired a change event it would update other models that would then fire off a change event causing the first model to update. The events aren&amp;#8217;t entirely recursive as they won&amp;#8217;t fire if the attributes don&amp;#8217;t change. However, when the models change they will cause change events on every other model which would trigger any number of callbacks listening for those events.&lt;/p&gt;
+
+&lt;p&gt;This could be a real problem if further down the track there were lots of models with the same ID on the page.&lt;/p&gt;
+
+&lt;p&gt;You might think I could use &lt;code&gt;silent:true&lt;/code&gt; but then if the change events never fired the views wouldn&amp;#8217;t be updated. So I need a solution that would allow the change event to still fire but not trigger the global event on &amp;#8216;child&amp;#8217; models.&lt;/p&gt;
+
+&lt;p&gt;So I opted to use a flag that would prevent events firing on the secondary models when they were synced.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Todo = Backbone.Model.extend({
+    initialize: function(options){
+    
+        // Flag to prevent recursion
+        this._syncChanges = true;
+
+        this.bind(&amp;#39;change&amp;#39;, function(){
+            if(this._syncChanges){
+                Events.publish(&amp;#39;todo:change&amp;#39;,this);
+            }
+        }.bind(this), this);
+
+        Events.subscribe(&amp;#39;todo:change&amp;#39;,function(model){
+            if(model.id === this.id &amp;amp;&amp;amp; model !== this){
+                this._syncChanges = false;
+                this.set(model.attributes);
+                this._syncChanges = true;
+            }
+        }.bind(this));
+    }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the other models are synced with the changes they won&amp;#8217;t fire the global event. Simple. I debated with myself for a long time whether it was appropriate to have this sort of logic in the model. The simplicity was jut too tasty.&lt;/p&gt;
+
+&lt;p&gt;With this I am able to sync models with the same ID anywhere on the page without needing to relying on code in each view or collection to stick everything together. This approach might not work as the application becomes more complicated but it works as a simple solution to the problem that we can work with right now.&lt;/p&gt;
+
+&lt;p&gt;Learning to avoid over-abstracting too early is something every developer needs to learn the hard way. Use the simplest solution first, make those tests pass, then refactor as needed.&lt;/p&gt;</content>
+  </entry>
+  <entry>
     <title>Otaru Snow Festival</title>
     <link rel="alternate" href="/2012/02/otaru-snow-festival"/>
     <id>/2012/02/otaru-snow-festival.html</id>
-    <published>2012-02-05T00:00:00+09:00</published>
-    <updated>2012-02-05T00:00:00+09:00</updated>
+    <published>2012-02-05T00:00:00+11:00</published>
+    <updated>2012-02-05T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -82,8 +163,8 @@
     <title>Climbing Mount Kurama</title>
     <link rel="alternate" href="/2012/01/climbing-mount-kurama"/>
     <id>/2012/01/climbing-mount-kurama.html</id>
-    <published>2012-01-31T00:00:00+09:00</published>
-    <updated>2012-01-31T00:00:00+09:00</updated>
+    <published>2012-01-31T00:00:00+11:00</published>
+    <updated>2012-01-31T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -159,8 +240,8 @@
     <title>Kyoto</title>
     <link rel="alternate" href="/2012/01/kyoto"/>
     <id>/2012/01/kyoto.html</id>
-    <published>2012-01-29T00:00:00+09:00</published>
-    <updated>2012-01-29T00:00:00+09:00</updated>
+    <published>2012-01-29T00:00:00+11:00</published>
+    <updated>2012-01-29T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -309,8 +390,8 @@
     <title>My Journey To Kyoto</title>
     <link rel="alternate" href="/2012/01/my-journey-to-kyoto"/>
     <id>/2012/01/my-journey-to-kyoto.html</id>
-    <published>2012-01-27T00:00:00+09:00</published>
-    <updated>2012-01-27T00:00:00+09:00</updated>
+    <published>2012-01-27T00:00:00+11:00</published>
+    <updated>2012-01-27T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -360,8 +441,8 @@
     <title>My First Days in Japan</title>
     <link rel="alternate" href="/2012/01/my-first-days-in-japan"/>
     <id>/2012/01/my-first-days-in-japan.html</id>
-    <published>2012-01-25T00:00:00+09:00</published>
-    <updated>2012-01-25T00:00:00+09:00</updated>
+    <published>2012-01-25T00:00:00+11:00</published>
+    <updated>2012-01-25T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -422,8 +503,8 @@
     <title>Hello World</title>
     <link rel="alternate" href="/2012/01/hello-world"/>
     <id>/2012/01/hello-world.html</id>
-    <published>2012-01-21T00:00:00+09:00</published>
-    <updated>2012-01-21T00:00:00+09:00</updated>
+    <published>2012-01-21T00:00:00+11:00</published>
+    <updated>2012-01-21T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
