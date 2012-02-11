@@ -1,5 +1,13 @@
 # Rack config
 
+# Code highlighting
+require 'rack/codehighlighter'
+use Rack::Codehighlighter, 
+  :pygments_api,
+  :element => "pre>code",
+  :pattern => /\A:::([-_+\w]+)\s*\n/,
+  :markdown => true
+
 # Look for index files in folders like Apache
 require "rack/contrib/try_static"
 use Rack::TryStatic, :root => "build", :urls => %w[/], :try => ['.html', 'index.html', '/index.html']

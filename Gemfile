@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem "rack", "~> 1.3.5"
 gem 'rack-contrib'
+gem 'rack-codehighlighter'
 gem 'builder'
 gem 'rb-fsevent'
 
