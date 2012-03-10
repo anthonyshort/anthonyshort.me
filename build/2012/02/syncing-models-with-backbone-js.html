@@ -25,7 +25,8 @@
 
     </script>
   </head>
-  <body>
+  <body class="is-article">
+
     <header>
       <hgroup>
         <h1><a href="/">Anthony Short</a></h1>
@@ -39,6 +40,7 @@
     <h1 class="entry-title">
       Syncing Models Across Views with Backbone.js 
     </h1>
+    <time class="updated" pubdate>February 11 2012</time>
     <div class="entry-content">
       <p>Over the past few months I've been working with Backbone.js a lot. I ran into a problem recently where I needed to sync models between multiple views and collections on the page. I wanted all the views and collections to instantly update as soon as a model changed in any of them.</p>
 
@@ -59,7 +61,8 @@
 
 <p>This would let me sync all the views instantly. Here's a dummy model that uses this idea. Let's assume that <code>Events</code> is whatever event emitter you're using across the app.</p>
 
-<pre><code>Todo = Backbone.Model.extend({
+<pre class="prettyprint linenums">
+Todo = Backbone.Model.extend({
     initialize: function(options){
 
         this.bind('change', function(){
@@ -67,13 +70,14 @@
         }.bind(this), this);
 
         Events.subscribe('todo:change',function(model){
-            if(model.id === this.id &amp;&amp; model !== this){
+            if(model.id === this.id && model !== this){
                 this.set(model.attributes);
             }
         }.bind(this));
     }
 });
-</code></pre>
+</pre>
+
 
 <p>There is a <em>very</em> obvious problem with this though. If a model fired a change event it would update other models that would then fire off a change event causing the first model to update. The events aren't entirely recursive as they won't fire if the attributes don't change. However, when the models change they will cause change events on every other model which would trigger any number of callbacks listening for those events.</p>
 
@@ -83,9 +87,10 @@
 
 <p>So I opted to use a flag that would prevent events firing on the secondary models when they were synced.</p>
 
-<pre><code>Todo = Backbone.Model.extend({
+<pre class="prettyprint linenums">
+Todo = Backbone.Model.extend({
     initialize: function(options){
-
+    
         // Flag to prevent recursion
         this._syncChanges = true;
 
@@ -96,7 +101,7 @@
         }.bind(this), this);
 
         Events.subscribe('todo:change',function(model){
-            if(model.id === this.id &amp;&amp; model !== this){
+            if(model.id === this.id && model !== this){
                 this._syncChanges = false;
                 this.set(model.attributes);
                 this._syncChanges = true;
@@ -104,7 +109,8 @@
         }.bind(this));
     }
 });
-</code></pre>
+</pre>
+
 
 <p>When the other models are synced with the changes they won't fire the global event. Simple. I debated with myself for a long time whether it was appropriate to have this sort of logic in the model. The simplicity was jut too tasty.</p>
 
@@ -113,10 +119,10 @@
 <p>Learning to avoid over-abstracting too early is something every developer needs to learn the hard way. Use the simplest solution first, make those tests pass, then refactor as needed.</p>
 
     </div>
-    <time class="updated" pubdate>Published on Feb 11 2012</time>
 </article>
     
 
+    
     <footer>
       <div>
         <p>I'm Anthony Short. A web developer from Newcastle, Australia working at <a href="http://newism.com.au">Newism</a>. I specialise in front-end development. I have a love of everything Japan and Apple.</p>
@@ -128,6 +134,8 @@
         </p>
       </div>
     </footer>
+    
+
   </body>
   <script src="/javascripts/prettify.js"></script>
   <script>prettyPrint()</script>

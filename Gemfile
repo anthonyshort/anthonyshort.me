@@ -6,6 +6,7 @@ gem 'rack-codehighlighter'
 gem 'builder'
 gem 'rb-fsevent'
 gem 'rdiscount'
+gem 'stitch'
 
 group :development do
   gem "middleman-blog"

@@ -184,7 +184,8 @@
 
 &lt;p&gt;This would let me sync all the views instantly. Here's a dummy model that uses this idea. Let's assume that &lt;code&gt;Events&lt;/code&gt; is whatever event emitter you're using across the app.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Todo = Backbone.Model.extend({
+&lt;pre class="prettyprint linenums"&gt;
+Todo = Backbone.Model.extend({
     initialize: function(options){
 
         this.bind('change', function(){
@@ -192,13 +193,14 @@
         }.bind(this), this);
 
         Events.subscribe('todo:change',function(model){
-            if(model.id === this.id &amp;amp;&amp;amp; model !== this){
+            if(model.id === this.id &amp;&amp; model !== this){
                 this.set(model.attributes);
             }
         }.bind(this));
     }
 });
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
+
 
 &lt;p&gt;There is a &lt;em&gt;very&lt;/em&gt; obvious problem with this though. If a model fired a change event it would update other models that would then fire off a change event causing the first model to update. The events aren't entirely recursive as they won't fire if the attributes don't change. However, when the models change they will cause change events on every other model which would trigger any number of callbacks listening for those events.&lt;/p&gt;
 
@@ -208,9 +210,10 @@
 
 &lt;p&gt;So I opted to use a flag that would prevent events firing on the secondary models when they were synced.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Todo = Backbone.Model.extend({
+&lt;pre class="prettyprint linenums"&gt;
+Todo = Backbone.Model.extend({
     initialize: function(options){
-
+    
         // Flag to prevent recursion
         this._syncChanges = true;
 
@@ -221,7 +224,7 @@
         }.bind(this), this);
 
         Events.subscribe('todo:change',function(model){
-            if(model.id === this.id &amp;amp;&amp;amp; model !== this){
+            if(model.id === this.id &amp;&amp; model !== this){
                 this._syncChanges = false;
                 this.set(model.attributes);
                 this._syncChanges = true;
@@ -229,7 +232,8 @@
         }.bind(this));
     }
 });
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
+
 
 &lt;p&gt;When the other models are synced with the changes they won't fire the global event. Simple. I debated with myself for a long time whether it was appropriate to have this sort of logic in the model. The simplicity was jut too tasty.&lt;/p&gt;
 
@@ -251,99 +255,72 @@
 </summary>
     <content type="html">&lt;p&gt;Over the past week I've been traveling around Hokkaido a fair bit. The novelty the snow once offered is now all but gone. Nothing particularly interesting has happened over the past week apart from a bit of sightseeing, more interesting food and more snow-covered everything. The Otaru Snow Festival was the exception. The festival had amazing food, warm cherry beer and beautiful scenery. It was one of the best days I've had in Japan.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-1.jpg" alt="Otaru canal" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The main canal in Otaru where the snow festival was held.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-1.jpg" alt="Otaru canal" /&gt;
+&lt;figcaption&gt;The main canal in Otaru where the snow festival was held.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;But first I'll explain how I finally made it to Otaru.&lt;/p&gt;
 
 &lt;p&gt;After leaving Kyoto the first place I ventured to was Jozenkei. It's a small onsen town about hour west of Sapporo. I spent the night in a fancy, traditional hotel there and just relaxed for a while. Everything about this place made me feel out of place. It was clearly for rich, japanese people not backpacking Australians. But I was able to experience a traditional Japanese-style room with tatami mats, floor table (seems an appropriate name seeing as you sit on the floor to use it) and decor.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/jozenkei-1.jpg" alt="Jozenkei" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Jozenkei was covered with snow from heavy fall the night before.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/jozenkei-1.jpg" alt="Jozenkei" /&gt;
+&lt;figcaption&gt;Jozenkei was covered with snow from heavy fall the night before.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The really interesting part of this stay was the meal. Dinner was a 10-course meal of food I'd mostly never eaten before. In the restaurant and I had my own private cubicle in a tatami mat room with a floor table. Most of the food was decent. I even had to cook my own chicken in a pot of miso in the middle of the table. One of the fish meals looked suspiciously like chicken. I asked the waitress (who was a giant she-man of questionable gender who had been giving me giggling looks all night because I was a foreigner) but she didn't speak a word of English so I was left questioning the mystery meat. I thought it best to put that one aside just in case I was supposed to cook it as well but I had a little taste first.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/jozenkei-2.jpg" alt="Jozenkei foot baths" /&amp;gt;
-&amp;lt;figcaption&amp;gt;These kappa baths are all over the town for washing your hands and feet in warm spring water. This is the hand basin of friendship.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/jozenkei-2.jpg" alt="Jozenkei foot baths" /&gt;
+&lt;figcaption&gt;These kappa baths are all over the town for washing your hands and feet in warm spring water. This is the hand basin of friendship.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Unfortunately the town had been hit hard with snow fall the night I arrived and all of the tourist attractions of the area were completely inaccessible. The towns 'mascot' is the kappa. Which I'm assuming from all the statues everywhere is a turtle. All of the baths scattered around town had kappa statues and there were bigger kappa statues on the bridges. They remind me of Koopa Troopers. Everything about Japan is just so wacky and cutesy.&lt;/p&gt;
 
 &lt;p&gt;The next day I set off for Niseko. Most people travel to Niseko for snowboarding. I, however, went there just for the atmosphere. I'd heard that the town was overrun with Australians. The tales were true. Every store had English menus, the people who worked there spoke English and every person you bumped into on the street was an Australian. I became blisteringly aware of the rudeness of Australians during my stay in Niseko. Compared to the Japanese they are loud, foul-mouthed and arrogant. Maybe just the fact that the Japanese are so polite and friendly made it more obvious but I felt embarrassed to be Australian while I was there.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-6.jpg" alt="Shopping in Otaru" /&amp;gt;
-&amp;lt;figcaption&amp;gt;One of the beautiful display at the Otaru Snow Festival.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-6.jpg" alt="Shopping in Otaru" /&gt;
+&lt;figcaption&gt;One of the beautiful display at the Otaru Snow Festival.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;I spent two days in Niseko exploring the town by day and night. The highlight of the trip was definitely the hostel I stayed in. On the second night, me and Ryo, the hostel owner, stayed up late drinking a lot of sake from the sake factory next door and sharing stories. Another friend of Ryo's was there with us but she didn't speak English so every sentence needed to be translated back and forth by Ryo. It was easily the best and most friendly hostel I've ever stayed in. He even gave all the guests lifts to where ever they wanted to go and cleaned the house from top to bottom every single day.&lt;/p&gt;
 
 &lt;p&gt;After Niseko I traveled back to Sapporo. I had planned to see the Otaru and Sapporo Snow Festivals while in town. On Saturday Jono, Maria and myself caught the train to Otaru to see the snow festival being held there. The town was beautiful and a distinct European and American influence was noticeable in it's architecture. It was actually quite weird. Otaru is primarily a fishing and tourist village and they didn't disappoint with the food. There were lots of little shops selling seafood. Giant crabs, oysters and clams were sitting in tanks waiting to be cooked up for the people passing by the store. The whole town had the smell of the ocean wafting through it that reminded me very much of home.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-10.jpg" alt="Otaru Beer Factory" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Otaru beer factory. The cherry beer was the best!&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-10.jpg" alt="Otaru Beer Factory" /&gt;
+&lt;figcaption&gt;Otaru beer factory. The cherry beer was the best!&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Down near the canal we found the Otaru Beer Factory by accident. Inside was a large dining hall that you would expect to be in a European town. High roof, constructed from wood and with two giant brew devices in the centre of the room that are used to brew the local Otaru beer. During winter they sell hot cherry beer, hot honey beer and hot smokey beer. The cherry beer was delicious and warmed you from the inside. It help counteract the effects of the snow and freezing cold outside. It almost tasted like mulled wine. The honey beer had a very distinct taste of honey but was less sweet and the beer taste was much more noticeable. Cherry beer seems to be their signature drink at the snow festivals in Hokkaido.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-3.jpg" alt="Shopping in Otaru" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Small street filled with quaint, little craft shops.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-3.jpg" alt="Shopping in Otaru" /&gt;
+&lt;figcaption&gt;Small street filled with quaint, little craft shops.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;By the time we had finished eating, darkness and snow had started falling so we made our way outside. The ocean winds put a sharp edge on the cold that cut straight through you. It was only -4º but the wind made it seem much, much colder. We walked down the main shopping area of Otaru and went into every shop just to get away from the cold. There were some amazing shops down that street. They primarily sold leather and glass goods but they handcraft everything they make. One of the leather stores had some very complex bags and models made entirely from leather. I haven't seen anything like that before. There were a lot of glass shops as this area was very famous for it's glass-making in the past.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-2.jpg" alt="Shopping in Otaru" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Fun fact: I nearly got hit by that car.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-2.jpg" alt="Shopping in Otaru" /&gt;
+&lt;figcaption&gt;Fun fact: I nearly got hit by that car.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The town is also known for music boxes. We found a shop full of hand-made music boxes. Some of them were elaborately-carved wood and others were made from glass. They had a table full of pop music in the form of music boxes, most of which we had never heard of before as it was all japanese and korean pop music. But there were some gems in there, namely the Star Wars and Darth Vader music boxes. They would have made a great gift but the novelty of the music boxes fades fairly quickly. By the time we had tried out most of them once we were sick of them.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-9.jpg" alt="Shopping in Otaru" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Algae ball pet. I should have bought one of these for someone I hate.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-9.jpg" alt="Shopping in Otaru" /&gt;
+&lt;figcaption&gt;Algae ball pet. I should have bought one of these for someone I hate.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The town had had one more surprise though. Pet algae balls. I kid you not. They are balls of algae that are only found in a few places on Earth. One of those places happens to be this town. You can buy them in various sizes and the water needs to be changed weekly. It's probably only one step up from a pet rock.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/02/otaru-4.jpg" alt="Shopping in Otaru" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The canal being lit up by candles and snow displays.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/02/otaru-4.jpg" alt="Shopping in Otaru" /&gt;
+&lt;figcaption&gt;The canal being lit up by candles and snow displays.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;We walked back to the canal and the festival had started. The canal was filled with candles floating in the icy water. On the walkway there were snow and ice sculptures. There were stalls where they were selling warm cherry beer, seafood soup and tasty, local crab. There were candles lit everywhere and a big love heart made from snow and candles where couples could get a photo taken. Every sculpture had candles and the canal was full of them. It was really beautiful but the cold was making the whole thing very unpleasant. A couple of cups of hot cherry beer and we were good to go!&lt;/p&gt;
 
@@ -367,91 +344,61 @@
 </summary>
     <content type="html">&lt;p&gt;The last couple of days have involved a lot of walking, hiking, and cold weather but yesterday is a day I'll never forget. I took the train from Kyoto to Kurama. It's a small, rural town about an hour north of Kyoto. The town is known for it's onsen and the hiking trail between itself and Kibune. The path winds up to the top of Mount Kurama and is peppered with numerous shrines and temples that have existed in one form or another since the year 700.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-3.jpg" alt="Kurama" /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-3.jpg" alt="Kurama" /&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;My journey started from Kurama. Mainly because I missed the train stop at Kibune. The hike started by making your way past a small shrine at the base of the mountain. The gate itself is breath-taking. From there the path winds up and around the mountain. Snow had fallen earlier in the morning so there was a fresh blanket of fluffy, fresh snow across the mountains and trees. When I first started ascending the mountain path it started to lightly snow.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-2.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;They put bibs on baby statues. I don't know why...&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-2.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;They put bibs on baby statues. I don't know why...&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;I noticed a few elderly couples doing the walk in the morning. The hike was no casual stroll either. It actually took me out of breath a couple of times so I'm fairly impressed that they can finish it.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-4.jpg" alt="Kurama" /&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-4.jpg" alt="Kurama" /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-6.jpg" alt="Kurama" /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-6.jpg" alt="Kurama" /&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The sights from the mountain as you scaled up towards the peak were amazing. I had to stop every 20 metres or so to take a photo so my climb took a lot longer than it probably should have. Along with the shrines up the trail, there were temizu basins with hot spring water flowing from them that, I'm assuming, had been sourced from the mountain itself.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-7.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;A particularly badass temizu basins for washing your hands and soul.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-7.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;A particularly badass temizu basins for washing your hands and soul.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-14.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;A strange monument at the base of the mountain.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-14.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;A strange monument at the base of the mountain.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;When I reached the temple near the peak of the mountain it was much bigger than I had expected. The main temple in the centre was surrounding by a large open area. There were buildings on either side of it. Inside the temple, there were monks praying in long, drawn-out humming sounds. It was nice and warm inside the temple and you could see the monks kneeling in front of the altar.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-17.jpg" alt="Kurama" /&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-17.jpg" alt="Kurama" /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-8.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The main temple with a giant pot of incense burning and the temple guardians.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-8.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;The main temple with a giant pot of incense burning and the temple guardians.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The whole thing seemed surreal at that point. I found it hard to believe that I was standing on top of a mountain in Japan at a buddhist temple that has existed for 1300 years. The building itself isn't the original. The temples have been burnt down and rebuilt a number of times. The path up the mountain and the location of the temple itself is still the same as it was though.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-5.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;There were all kinds of shrines and statues leading up to the top, including nobs.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-5.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;There were all kinds of shrines and statues leading up to the top, including nobs.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-10.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Oh look, more friggin' stairs.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-10.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;Oh look, more friggin' stairs.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;At the very top of the mountain there was only a small shrine. The ground was covered by the roots of the surrounding trees creating an obstacle course that managed to trip me up a few times. The tree is supposedly sacred to buddhists;&lt;/p&gt;
 
@@ -461,41 +408,29 @@
 
 &lt;p&gt;Sounds like something from scientology. Interesting story at least. It made my whole journey up the mountain feel more exciting. Because of the large trees there wasn't much of a view unfortunately. But I decided to get a little souvenir while I was there. I took out a bottle and filled it with snow from the top of Mount Kurama and picked a leaf from a plant that was growing in the centre. I have no idea what I can possibly do with these souvenirs but it seems somewhat magical that I climbed a mountain in Japan and brought back some snow from the peak.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-16.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;The path quality degraded a fair bit at the top.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-16.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The path quality degraded a fair bit at the top.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-11.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;At the peak of the mountain.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-11.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;At the peak of the mountain.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The path at the start of the trail was made from stone but after the main temple this quickly degraded into no path at all. All I had for a little while was the footprints of people who had walked before me. It was slightly unnerving but at the same time it felt great being lost in the mountain for a while and becoming completely disconnected from society for while.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-12.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;One of the newer shrines up on the mountain by the look of the timber.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-12.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;One of the newer shrines up on the mountain by the look of the timber.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The 3km trail over the mountain was the most beautiful walk I've ever been on. It was also incredibly relaxing as I was alone on the mountain for most of the time and completely isolated from towns and cities for a few hours. It was just me, the mountain, the snow and the trees. If only there was an onsen at the peak I could have stayed there for the rest of the day.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kurama-13.jpg" alt="Kurama" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The shops in Kibune were extremely traditional.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kurama-13.jpg" alt="Kurama" /&gt;
+&lt;figcaption&gt;The shops in Kibune were extremely traditional.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -511,129 +446,90 @@
 </summary>
     <content type="html">&lt;p&gt;I've spent the last two and a bit days here in Kyoto and I've fallen in love with the city. Everything about it is exactly what I expected of life in Japan. The streets are crowded and full of people walking down tiny alleys filled with shops, restaurants, cafés and more. Even the run-down areas in dirty alleys become alive at night. At night the city itself takes on a cyberpunk vibe with bright, colourful lights, loud incomprehensible advertising, crazy fashion and rustic building exteriors. This all combines with Japanese culture to produce something you'd expect to see in Bladerunner or Deus Ex. It's really out of this world.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kyoto-night-1.jpg" alt="Kyoto at night" /&amp;gt;
-&amp;lt;figcaption&amp;gt;I've just fallen into Bladerunner. Every single alley way looks like this.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kyoto-night-1.jpg" alt="Kyoto at night" /&gt;
+&lt;figcaption&gt;I've just fallen into Bladerunner. Every single alley way looks like this.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The sheer number of shops and the way the integrate their culture is what intrigues me the most. There are dozens of alleys in a couple of blocks and they are all filled with amazing and beautiful restaurants. Even down the dankest alley you might find a small, exquisitely japanese-fashioned restaurant deep within.&lt;/p&gt;
 
 &lt;p&gt;The first afternoon I arrived I just walked around looking at the city and getting my bearings. There's so much to take in it's almost overwhelming. For dinner I wandered down an alley and found a little restaurant called the Kitchen Barbeque (I think). I was the only person in the restaurant. This is something I've been doing lately as it gives me a chance to get to know the people there. I couldn't understand the menu so I ordered the only item I could read, okonomiyaki. A japanaese-style, unsweetened pancake with vegetables, meat, japanese mayonnaise, a bbq-style sauce and bonito on top.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/okonomiyaki.jpg" alt="Okonomiyaki in Kyoto" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Okonomiyaki. The best I've ever had.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/okonomiyaki.jpg" alt="Okonomiyaki in Kyoto" /&gt;
+&lt;figcaption&gt;Okonomiyaki. The best I've ever had.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Afterwards I was lucky enough to stumble upon the Yasaka Shrine at night when all the lanterns are lit up and there were monks playing instruments inside the buildings.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/yasaka-night-1.jpg" alt="Yasaka Shrine in Kyoto at night" /&amp;gt;
-&amp;lt;figcaption&amp;gt;My phone camera really couldn't do this justice.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/yasaka-night-1.jpg" alt="Yasaka Shrine in Kyoto at night" /&gt;
+&lt;figcaption&gt;My phone camera really couldn't do this justice.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Next I decided to go and find the British pub so I could meet some people who could give me some advice on Kyoto. So I wandered around the city some more and ended up in the red light district. There were so many nude bars and brothels and I couldn't seem to escape. They even had people out the front selling their wares just like other stores in Japan. It's like they had built an elaborate maze of alleys to trap you inside there. I stumbled upon an Irish pub in the area called Gael's Irish Pub so I thought I could get a drink and find my way out of this sex hole.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/irish-pub.jpg" alt="Gael's Irish Pub in Kyoto" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Irish Pub. Japan-style. They even had irish folk music.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/irish-pub.jpg" alt="Gael's Irish Pub in Kyoto" /&gt;
+&lt;figcaption&gt;Irish Pub. Japan-style. They even had irish folk music.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;After discovering that I'd lost my bearings and had somehow crossed the river into Gion I was able to find the British pub called The HUB. Rather than drinking on my lonesome I joined up with a random group of people there who were kind enough to let me crash their gathering. It turns out they were all teaching english in Japan, which is something I've always wanted to do. So they enlightened me about the life of an english teacher in Japan. Many, many drinks later and many fun conversation had, I stumbled home.&lt;/p&gt;
 
 &lt;p&gt;The next day I walked over into the old area of Gion where there are traditional Japanese streets and buildings. It was an amazing thing to behold. Not just a single street but what seemed like an entire suburb of the city was dedicated to this traditional style. It felt like I had gone back in time and took the opportunity to soak it all in.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/gion-3.jpg" alt="Gion" /&gt;
+&lt;figcaption&gt;Every street and alley is beautiful and very well maintained.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/gion-3.jpg" alt="Gion" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Every street and alley is beautiful and very well maintained.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/gion-1.jpg" alt="Gion" /&gt;
+&lt;figcaption&gt;This is my favourite photo from the trip so far. Taken with a decent camera, it would have been a stunning shot, but alas I only had my iPhone.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/gion-1.jpg" alt="Gion" /&amp;gt;
-&amp;lt;figcaption&amp;gt;This is my favourite photo from the trip so far. Taken with a decent camera, it would have been a stunning shot, but alas I only had my iPhone.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/gion-2.jpg" alt="Gion" /&amp;gt;
-&amp;lt;figcaption&amp;gt;She's asking people to come into the shop. She was kind enough to pose for a stranger.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/gion-2.jpg" alt="Gion" /&gt;
+&lt;figcaption&gt;She's asking people to come into the shop. She was kind enough to pose for a stranger.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;This is where I found my first temple, Kennin-ji. I'd love to have a house like this. It was just like every traditional house I've ever seen in a movie and they are even more beautiful in person. Tatami mats are extremely comfortable to walk and sit on. From the gift shop I bought a sensu (japanese fan) and a sweet, hand-made japanese calligraphy calendar to put up on the wall at home.&lt;/p&gt;
 
 &lt;p&gt;On the way home I found a little shop that sold lots of sake sets which is exactly what I need on these cold Kyoto nights.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-1.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;There were 3 girls dressed as Geisha who were happy enough to let me takes a few photos of them. They really loved the attention.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-1.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;There were 3 girls dressed as Geisha who were happy enough to let me takes a few photos of them. They really loved the attention.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-2.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;Outside there were beautiful gardens.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-2.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Outside there were beautiful gardens.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-5.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Inside there were tatami mats, miniature shrines and living quarters.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-5.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;Inside there were tatami mats, miniature shrines and living quarters.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The shrine itself was, from what I could gather, focused on the idea of the God of Storms and the God of Lightening as they were depicted everywhere. I really should have read the brochure, but just looking at the badass dragons on the roof was enough. If I could have a shrine I'd definitely put dragons in mine, so this guy must have had good taste.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-3.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;The shrine itself. Again, I didn't read the brochure so I have no idea what it's about.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-3.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The shrine itself. Again, I didn't read the brochure so I have no idea what it's about.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-4.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;This covered the entire roof. It was massive. Michelangelo's &amp;lt;em&amp;gt;'Creation of Adam'&amp;lt;/em&amp;gt; or two badass dragons on your roof? The Japanese made the right choice.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-4.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;This covered the entire roof. It was massive. Michelangelo's &lt;em&gt;'Creation of Adam'&lt;/em&gt; or two badass dragons on your roof? The Japanese made the right choice.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Outside the temple there were some gardens covering a large area which would have been even more impressive in spring. In winter the parks and gardens are not so great. But I did find one a place to hang ema (wooden plaques) on which you write your wish and hang it up for the spirits to take. I wish I could read japanese just so I could see what everyone was asking for.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/kenninji-6.jpg" alt="Kennin-ji Shrine" /&amp;gt;
-&amp;lt;figcaption&amp;gt;You can buy ema from the shrine to hang here.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/kenninji-6.jpg" alt="Kennin-ji Shrine" /&gt;
+&lt;figcaption&gt;You can buy ema from the shrine to hang here.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Dinner this night was rather entertaining. I was wandering around looking for a nice, small, traditional shop and I found one in an alley in Gion. The restaurant was traditionally-fashioned and the only lady who worked there wore a kimono. I was the only person there and she didn't speak english.&lt;/p&gt;
 
@@ -647,59 +543,41 @@
 
 &lt;p&gt;We walked through Gion where I had been the previous day but they took us up through Maruyama Park and further up towards Kiyomizudera Temple. The walk up to the temple included more traditional-styled terraces, shops, streets and alleyways and was even more impressive than those that I found the previous day.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/gion-4.jpg" alt="Gion" /&gt;
+&lt;figcaption&gt;Some of the shops leading to Kiyomizudera Temple in the mountains. These shops have been here selling wares to tourists and pilgrims for centuries.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/gion-4.jpg" alt="Gion" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Some of the shops leading to Kiyomizudera Temple in the mountains. These shops have been here selling wares to tourists and pilgrims for centuries.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/gion-5.jpg" alt="Gion" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The streets are lined with hundreds of restaurants and shops selling food and souvenirs.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/gion-5.jpg" alt="Gion" /&gt;
+&lt;figcaption&gt;The streets are lined with hundreds of restaurants and shops selling food and souvenirs.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;My tour guide Yumiko helped me out with my japanese and the local customs. We bought some dango (sweet rice dough balls on a stick) and tried lots of different food at the shops towards to the temples. There were soy sauce pickled plums, fiery hot chips, pickled just about everything, dango and these very nice sweet rice dough cakes filled with sweets like chocolate and fruit. I learnt a few new words from Yumi and a lot of interesting facts about the temples, the temple gates, the guardians, the meaning of the levels of the pavilions and a lot more. It was a great day learning a lot about japan, kyoto and making some really great new friends.&lt;/p&gt;
 
 &lt;p&gt;Up along the path the temple we found a bunch of locals smashing something with a hammer. Apparently it was the same dough as the dango but they smash it with the hammer to smooth it out and produce a better flavour. It's a local custom and being asked to use the hammer is supposed to be a very honourable task.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/dough-1.jpg" alt="Smashing dough with a hammer" /&gt;
+&lt;figcaption&gt;You can see the hammer and platform they were using to smash it&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/dough-1.jpg" alt="Smashing dough with a hammer" /&amp;gt;
-&amp;lt;figcaption&amp;gt;You can see the hammer and platform they were using to smash it&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/dough-2.jpg" alt="Cooking the dough" /&amp;gt;
-&amp;lt;figcaption&amp;gt;I don't think I'm supposed to be here. Also, he looks like the neighbour from &amp;lt;a href="http://www.imdb.com/media/rm3145701376/tt0106701"&amp;gt;Dennis the Menace&amp;lt;/a&amp;gt; except without a mustache and neither of them look japanese from here.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/dough-2.jpg" alt="Cooking the dough" /&gt;
+&lt;figcaption&gt;I don't think I'm supposed to be here. Also, he looks like the neighbour from &lt;a href="http://www.imdb.com/media/rm3145701376/tt0106701"&gt;Dennis the Menace&lt;/a&gt; except without a mustache and neither of them look japanese from here.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Kiyomizudera Temple overlooked Kyoto and was a series of massive wooden shrines, temples and other buildings scattered across the mountain. There are Temizu basins at the entrance of the temple for cleansing the soul of impurities before entering the shrine.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/temple.jpg" alt="The entrance to Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;The entrance to Kiyomizudera Temple&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/temple.jpg" alt="The entrance to Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The entrance to Kiyomizudera Temple&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/temizu.jpg" alt="Temizu basin at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Temizu basin at Kiyomizudera Temple&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/temizu.jpg" alt="Temizu basin at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;Temizu basin at Kiyomizudera Temple&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;One very interesting fact about this temple that Yumi was telling me was that it was believed that jumping from the 20m high balcony of this building would grant you your dreams...&lt;/p&gt;
 
@@ -707,65 +585,44 @@
 
 &lt;p&gt;Amazingly, 85% of people survived the jump, but I'm assuming their only wish at that point was to be able to walk again. Obviously they've banned this now so people are just throwing themselves off the edge.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/temple-balcony.jpg" alt="Balcony at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;Jump off this and try and survive.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/temple-balcony.jpg" alt="Balcony at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Jump off this and try and survive.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/incense.jpg" alt="Incense at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;Incense at Kiyomizudera Temple. I'm assuming these give +1 Purification as everyone was sniffing up the smoke.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/incense-2.jpg" alt="Incense at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;You can pick up and light incense to get a really good sniff.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/incense.jpg" alt="Incense at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Incense at Kiyomizudera Temple. I'm assuming these give +1 Purification as everyone was sniffing up the smoke.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/incense-2.jpg" alt="Incense at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;You can pick up and light incense to get a really good sniff.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/friends.jpg" alt="Walking tour group at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;My new friends!&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/friends.jpg" alt="Walking tour group at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;My new friends!&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the only temple in Japan to also have a shrine. Up at the shrine there are two stones called the love stones. It was believed that if you could walk between the two love stones with your eyes closed and with no help that you would find love. There were a few people trying it and one girl who nearly fell down the stairs.&lt;/p&gt;
 
 &lt;p&gt;You can also buy good luck charms at the shrine. I bought myself a traditional happiness charm which was is a little bell on string. So fingers crossed that it gives me lots of happiness!&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/love-rock.jpg" alt="Love rock at Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;One of the love rocks.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/love-rock.jpg" alt="Love rock at Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;One of the love rocks.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/temple-bottom.jpg" alt="Bottom of Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;Three drinking fountains that each give a different type of luck. Pick one!&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/temple-bottom.jpg" alt="Bottom of Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Three drinking fountains that each give a different type of luck. Pick one!&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/temple-end.jpg" alt="Exit of Kiyomizudera Temple" /&amp;gt;
-&amp;lt;figcaption&amp;gt;This area at the bottom of the temple would be amazing in Spring.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/temple-end.jpg" alt="Exit of Kiyomizudera Temple" /&gt;
+&lt;figcaption&gt;This area at the bottom of the temple would be amazing in Spring.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;And so that finished up the walking tour of Kiyomizudera Temple, but we decided that we weren't ready to leave just yet so we all went and had lunch together. I tried some uzi-soba noodles with fermented soy beans and whipped, raw egg on top. It was actually really delicious. Besides, any meal where they ask you if you have any health problems before you order the dish, must be good.&lt;/p&gt;
 
@@ -775,13 +632,10 @@
 
 &lt;p&gt;Tomorrow, I'm headed north to the rural town of Karuma for some hot spring and hiking action. I should able to hike in the woods between two towns but hopefully I don't get lost.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/walking-tour.jpg" alt="End of the walking tour" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The end of the walking tour. Time to part ways with my new friends :(&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/walking-tour.jpg" alt="End of the walking tour" /&gt;
+&lt;figcaption&gt;The end of the walking tour. Time to part ways with my new friends :(&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -797,38 +651,28 @@
 </summary>
     <content type="html">&lt;p&gt;Today is the second day traveling by myself in Japan and I've headed from Furano, through Sapporo and down to Kyoto. It was always going to be a bit of a character builder traveling around by myself in a country I didn't know and not being able to speak the local tongue. But next couple of days would prove to be the most interesting days yet involving tunnels, new friends and running shoe-less (and almost pants-less) through the airport.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/sapporo-1.jpg" alt="Sapporo" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Snow still blankets the entire city&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/sapporo-1.jpg" alt="Sapporo" /&gt;
+&lt;figcaption&gt;Snow still blankets the entire city&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;h2&gt;Going Underground&lt;/h2&gt;
 
 &lt;p&gt;Last time I was in Sapporo I was wandering around the city with Justin and we couldn't figure out why there were so few people on the streets in the middle of the day on a weekday. It turns out that there are tunnels that run underneath the entire CBD so you don't have to walk around in the cold!&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;a href="http://anthy.me/DiGM" alt="View Larger Version"&amp;gt;&amp;lt;img src="/images/2012/01/brains.jpg" alt="Sapporo" /&amp;gt;&amp;lt;/a&amp;gt;
-&amp;lt;figcaption&amp;gt;Braiiiiiinnnnsss...&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;a href="http://anthy.me/DiGM" alt="View Larger Version"&gt;&lt;img src="/images/2012/01/brains.jpg" alt="Sapporo" /&gt;&lt;/a&gt;
+&lt;figcaption&gt;Braiiiiiinnnnsss...&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Up on the surface it was a zombie apocalypse-esque ghost town albeit minus the zombies (unfortunately). But I found the entrance to the tunnel. It was another world down there. There are shops, markets and cafes with literally thousands of people walking through the tunnels &lt;strong&gt;underground!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;For some reason the entire time I was down there I was imagining the underground music from Super Mario Bros.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/underground-mole.jpg" alt="Some mascot I found in the tunnels" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Wait... A costume wearing a costume?
-    &amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/underground-mole.jpg" alt="Some mascot I found in the tunnels" /&gt;
+&lt;figcaption&gt;Wait... A costume wearing a costume?&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;I managed to snag this photo with this fat, cute thing. I have no idea what this is supposed to be or what they were trying to sell me so I just smiled and handed them my phone to take a photo.&lt;/p&gt;
 
@@ -836,13 +680,10 @@
 
 &lt;p&gt;I stayed in a very small hostel in Sapporo called &lt;a href="http://tpa.spirallife.jp/english/index.html"&gt;Time Peace Apartment&lt;/a&gt;. It was run by a Japanese couple. The only other people staying there were two Korean brothers roughly my age. After a brief attempt at a  conversation we both seem to give up and close the curtains on our beds.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/sapporo-2.jpg" alt="Susukino" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Susukino has a lot of butt-load of restaurants&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/sapporo-2.jpg" alt="Susukino" /&gt;
+&lt;figcaption&gt;Susukino has a lot of butt-load of restaurants&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;At night I explored &lt;strong&gt;Susukino&lt;/strong&gt;, the trendy, restaurant and club-filled area of Sapporo. I'd had enough awkward and challenging conversations and found the closest english-speaking pub - &lt;strong&gt;TK6&lt;/strong&gt;. In there I ended up talking to Jonno from Brisbane, Australia who was over here working at the university in Sapporo for a month. Seeing as it was Australia Day the bar was selling Australian beers and food. I didn't come to Japan to have Australia food, but we ended up drinking and talking all night. Good beer, good company.&lt;/p&gt;
 
@@ -872,97 +713,70 @@
 
 &lt;p&gt;My first destination was Furano in Hokkaido (the north island). To get there I had to travel through Sapporo, which is one of the larger cities in Japan, but not very old. We walked out of the train station in Sapporo and had to throw on all of our snow gear to deal with the cold but the locals seemed happy enough walking around in short skirts and t-shirts.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/japan-1.jpg" alt="Building in Takikawa" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Building in Takikawa where we were stuck for a couple of hours&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/japan-1.jpg" alt="Building in Takikawa" /&gt;
+&lt;figcaption&gt;Building in Takikawa where we were stuck for a couple of hours&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;We couldn't seem to work out what the locals ate for breakfast, so on the first we found a tiny curry shop in Sapporo and had curry for breakfast. I paid for that one a little while later. Justin continued his Japan holiday tradition and had beer with breakfast. The restaurant was tiny and traditional. You walked into the store and were greeted with a friendly &lt;em&gt;ohiyo gozaimasu!&lt;/em&gt;. The lady was very polite and I had a chance to practice my Japanese on a real-life person for the first time. She seemed to understand what I was saying so mission accomplished!&lt;/p&gt;
 
 &lt;p&gt;We had a bit of time to kill in Sapporo because the trains to Furano were cancelled because of heavy snow (which was a good sign for our upcoming snowboarding adventures) so we went and explored Susukino district where all the shops and restaurants are. We found a shop ran by an old man that stocked swords, shuriken, BB guns and a whole lot of inappropriate paraphernalia that wouldn't be able to leave Japan. Alas, I walked out of there with a blunt, metal shuriken for ¥1000. Hopefully I can get it back into Australia.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/shuriken.jpg" alt="Shuriken I bought in Sapporo" /&amp;gt;
-&amp;lt;figcaption&amp;gt;A blunt shuriken I bought in Sapporo. Hopefully this gets through customs.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/shuriken.jpg" alt="Shuriken I bought in Sapporo" /&gt;
+&lt;figcaption&gt;A blunt shuriken I bought in Sapporo. Hopefully this gets through customs.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;We traveled to Furano and met up with the rest of the guys staying at the house and went out for dinner at a restaurant named Sai that had a bbq grill in the centre of each table for cooking your own food. We had deer, pork, beef and what I'm assuming was intestines. Two bottles of sake later and much meat consumed we ventured out to the local bar called Bridge Bar.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/japan-2.jpg" alt="Japanese BBQ Restaurant at Sai in Furano" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Various meats and onion at Sai, a Japanese BBQ Restaurant in Furano&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/japan-2.jpg" alt="Japanese BBQ Restaurant at Sai in Furano" /&gt;
+&lt;figcaption&gt;Various meats and onion at Sai, a Japanese BBQ Restaurant in Furano&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;Bridge Bar is run by an American fellow named Bill who was kind enough to translate a few things for us and just help us out with Japanese culture in general. It's called Bridge Bar because he encourages western tourists and local japanese people to 'bridge the language barrier' and hang out and talk. Bill runs english classes for locals and hosts dinners for his students and tourists.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/japan-3.jpg" alt="Bridge Bar in Furano" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Bridge Bar in Furano. Bill, the owner, is on the left (half cut off) and helped translate a few things for us as well as having an awesome beer collection.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/japan-3.jpg" alt="Bridge Bar in Furano" /&gt;
+&lt;figcaption&gt;Bridge Bar in Furano. Bill, the owner, is on the left (half cut off) and helped translate a few things for us as well as having an awesome beer collection.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;The next day, with a mild hangover, we set out to snowboard on the slopes of Furano. I've only been snowboarding a couple of times so my levels of suck are quite high. Nevertheless, we went to the topmost peak of the mountain to start off with. Probably a bad idea. The slopes were extreme steep but we managed to make our way down. The course is huge. It took us a while to get down the roughly 3km run. We spent the day here trying out various courses and going to the other side of the mountain and back via chair lift and snowboard.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/furano-mountain.jpg" alt="Top of the slopes in Furano" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The top of the slopes in Furano. The view was amazing. You can see an active volcano lies near the town in the distance.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/furano-mountain.jpg" alt="Top of the slopes in Furano" /&gt;
+&lt;figcaption&gt;The top of the slopes in Furano. The view was amazing. You can see an active volcano lies near the town in the distance.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;We split up the day with some food from the restaurant at the foot of the mountain. I had a delicious ramen noodle soup with egg, beef and seaweed in a chicken broth. It warmed me up and gave me the energy to make my way back out to the mountain for some more awful snowboarding attempts and many falls. While we were there the mountain was covered with children from local schools who appear to do snowboarding and skiing as a school sport. It was amazing watching little kids blaze past me on their skis whilst I was fumbling around on the ground struggling to stand up from my last fall.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/snow-capped-trees.jpg" alt="Trees iced with snow fall from the previous night" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The trees were iced with the snowfall from the previous night at the top of the mountain.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/snow-capped-trees.jpg" alt="Trees iced with snow fall from the previous night" /&gt;
+&lt;figcaption&gt;The trees were iced with the snowfall from the previous night at the top of the mountain.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;For dinner we found a local sushi train restaurant called Topical Sushi (I'm fairly sure it's meant to say 'Tropical' seeing as the whole restaurant had a tropical theme and branding). They had great sushi and a great atmosphere. They didn't speak much english and there seemed to be more westerners at the restaurant than they were used to. Most of the ordering consisted of a 'sumimasen' and just pointing at something. I had a lot of food, various fish sushi, sweet potato balls on a stick, octopus and a tasty coffee jelly with coffee ice cream for dessert.&lt;/p&gt;
 
 &lt;p&gt;After that, we tried to push on to Bridge Bar but snowboarding all day had made us weary. I tried an american micro-brewery amber ale and cider then we head home to finish off the night.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/japan-4.jpg" alt="Sushi Train in Furano" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Sushi Train restaurant in Furano. They didn't speak any english so it involved a lot of pointing and awkward conversations. Killer crepe cake though.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/japan-4.jpg" alt="Sushi Train in Furano" /&gt;
+&lt;figcaption&gt;Sushi Train restaurant in Furano. They didn't speak any english so it involved a lot of pointing and awkward conversations. Killer crepe cake though.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;One thing I noticed since being here was the proliferation of vending machines. They're on every corner and sell the craziest drinks I've ever seen — Beer, corn soup, hot chocolate, coffee, green tea, milkshakes. I'm slowly making my way through all the different drinks but most seem to taste like ass.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/vending-machines.jpg" alt="Vending machines in Japan selling alcolhol" /&amp;gt;
-&amp;lt;figcaption&amp;gt;Vending machines are everywhere in Japan. They sell alcohol in them as well!&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/vending-machines.jpg" alt="Vending machines in Japan selling alcolhol" /&gt;
+&lt;figcaption&gt;Vending machines are everywhere in Japan. They sell alcohol in them as well!&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 
 &lt;p&gt;All in all, it's been a great trip so far and very eye opening. I've probably learned more Japanese in the last couple of days than in the past year (which isn't much anyway). I've felt more comfortable here than in America a couple of years ago, even though I don't speak Japanese. Today I'm heading out on my own to explore the rest of Hokkaido and Kyoto. My first stop is to an onsen (a natural hot spring bath) near Furano then I'll make my way back to Sapporo to find my hostel and hopefully I'll be able to pick up a copy of the latest Shonen Jump weekly manga magazine so I can read Naruto in it's natural habitat.&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;img src="/images/2012/01/ski-fields.jpg" alt="The ski fields at Furano at the end of the day" /&amp;gt;
-&amp;lt;figcaption&amp;gt;The mountain after a day of hard boarding. Beautiful.&amp;lt;/figcaption&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;
+&lt;img src="/images/2012/01/ski-fields.jpg" alt="The ski fields at Furano at the end of the day" /&gt;
+&lt;figcaption&gt;The mountain after a day of hard boarding. Beautiful.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>

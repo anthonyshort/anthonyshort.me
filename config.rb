@@ -9,6 +9,7 @@ activate :blog
 # Susy grids in Compass
 # First: gem install compass-susy-plugin
 # require 'susy'
+require 'stitch'
 
 # Change Compass configuration
 # compass_config do |config|

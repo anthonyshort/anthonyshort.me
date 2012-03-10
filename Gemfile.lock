@@ -96,6 +96,8 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    stitch (0.1.4)
+      compass
     syntax (1.0.0)
     temple (0.3.5)
     thin (1.2.11)
@@ -126,4 +128,5 @@ DEPENDENCIES
   rack-contrib
   rb-fsevent
   rdiscount
+  stitch
   unicorn
