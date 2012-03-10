@@ -121,7 +121,6 @@ PLATFORMS
 
 DEPENDENCIES
   builder
-  compass
   middleman (~> 2.0.14)
   middleman-blog
   rack (~> 1.3.5)
@@ -129,5 +128,5 @@ DEPENDENCIES
   rack-contrib
   rb-fsevent
   rdiscount
-  stitch (~> 0.1.4)
+  stitch
   unicorn
