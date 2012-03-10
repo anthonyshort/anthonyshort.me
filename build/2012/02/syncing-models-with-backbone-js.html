@@ -40,62 +40,62 @@
       Syncing Models Across Views with Backbone.js 
     </h1>
     <div class="entry-content">
-      <p>Over the past few months I&#8217;ve been working with Backbone.js a lot. I ran into a problem recently where I needed to sync models between multiple views and collections on the page. I wanted all the views and collections to instantly update as soon as a model changed in any of them.</p>
+      <p>Over the past few months I've been working with Backbone.js a lot. I ran into a problem recently where I needed to sync models between multiple views and collections on the page. I wanted all the views and collections to instantly update as soon as a model changed in any of them.</p>
 
 <p>I thought of a couple of ways to approach this problem:</p>
 
 <ul>
 <li>Use the same collection in multiple views</li>
-
 <li>Use the same model in all the views using a manager or factory</li>
-
 <li>Have the models listening for changes on other models directly</li>
 </ul>
 
-<p>Passing the same collection through to the different views wasn&#8217;t possible because the multiple views used different data. This led me to try and create a model manager/factory to handle the creation of the models so that there would only be one instance of each model. That would require a great deal of restructuring and might not even work in the long run.</p>
 
-<p>Over-abstracting code too early is a trap that I&#8217;ve been caught in before so I went with the <strong>simplest</strong> solution to the problem.</p>
+<p>Passing the same collection through to the different views wasn't possible because the multiple views used different data. This led me to try and create a model manager/factory to handle the creation of the models so that there would only be one instance of each model. That would require a great deal of restructuring and might not even work in the long run.</p>
+
+<p>Over-abstracting code too early is a trap that I've been caught in before so I went with the <strong>simplest</strong> solution to the problem.</p>
 
 <p><strong>The models listen for a change event to update their attributes and broadcast an event with their own attributes when they change.</strong></p>
 
-<p>This would let me sync all the views instantly. Here&#8217;s a dummy model that uses this idea. Let&#8217;s assume that <code>Events</code> is whatever event emitter you&#8217;re using across the app.</p>
+<p>This would let me sync all the views instantly. Here's a dummy model that uses this idea. Let's assume that <code>Events</code> is whatever event emitter you're using across the app.</p>
 
 <pre><code>Todo = Backbone.Model.extend({
     initialize: function(options){
 
-        this.bind(&#39;change&#39;, function(){
-            Events.publish(&#39;todo:change&#39;,this);
+        this.bind('change', function(){
+            Events.publish('todo:change',this);
         }.bind(this), this);
 
-        Events.subscribe(&#39;todo:change&#39;,function(model){
+        Events.subscribe('todo:change',function(model){
             if(model.id === this.id &amp;&amp; model !== this){
                 this.set(model.attributes);
             }
         }.bind(this));
     }
-});</code></pre>
+});
+</code></pre>
 
-<p>There is a <em>very</em> obvious problem with this though. If a model fired a change event it would update other models that would then fire off a change event causing the first model to update. The events aren&#8217;t entirely recursive as they won&#8217;t fire if the attributes don&#8217;t change. However, when the models change they will cause change events on every other model which would trigger any number of callbacks listening for those events.</p>
+<p>There is a <em>very</em> obvious problem with this though. If a model fired a change event it would update other models that would then fire off a change event causing the first model to update. The events aren't entirely recursive as they won't fire if the attributes don't change. However, when the models change they will cause change events on every other model which would trigger any number of callbacks listening for those events.</p>
 
 <p>This could be a real problem if further down the track there were lots of models with the same ID on the page.</p>
 
-<p>You might think I could use <code>silent:true</code> but then if the change events never fired the views wouldn&#8217;t be updated. So I need a solution that would allow the change event to still fire but not trigger the global event on &#8216;child&#8217; models.</p>
+<p>You might think I could use <code>silent:true</code> but then if the change events never fired the views wouldn't be updated. So I need a solution that would allow the change event to still fire but not trigger the global event on 'child' models.</p>
 
 <p>So I opted to use a flag that would prevent events firing on the secondary models when they were synced.</p>
 
 <pre><code>Todo = Backbone.Model.extend({
     initialize: function(options){
-    
+
         // Flag to prevent recursion
         this._syncChanges = true;
 
-        this.bind(&#39;change&#39;, function(){
+        this.bind('change', function(){
             if(this._syncChanges){
-                Events.publish(&#39;todo:change&#39;,this);
+                Events.publish('todo:change',this);
             }
         }.bind(this), this);
 
-        Events.subscribe(&#39;todo:change&#39;,function(model){
+        Events.subscribe('todo:change',function(model){
             if(model.id === this.id &amp;&amp; model !== this){
                 this._syncChanges = false;
                 this.set(model.attributes);
@@ -103,13 +103,15 @@
             }
         }.bind(this));
     }
-});</code></pre>
+});
+</code></pre>
 
-<p>When the other models are synced with the changes they won&#8217;t fire the global event. Simple. I debated with myself for a long time whether it was appropriate to have this sort of logic in the model. The simplicity was jut too tasty.</p>
+<p>When the other models are synced with the changes they won't fire the global event. Simple. I debated with myself for a long time whether it was appropriate to have this sort of logic in the model. The simplicity was jut too tasty.</p>
 
 <p>With this I am able to sync models with the same ID anywhere on the page without needing to relying on code in each view or collection to stick everything together. This approach might not work as the application becomes more complicated but it works as a simple solution to the problem that we can work with right now.</p>
 
 <p>Learning to avoid over-abstracting too early is something every developer needs to learn the hard way. Use the simplest solution first, make those tests pass, then refactor as needed.</p>
+
     </div>
     <time class="updated" pubdate>Published on Feb 11 2012</time>
 </article>
@@ -127,4 +129,6 @@
       </div>
     </footer>
   </body>
+  <script src="/javascripts/prettify.js"></script>
+  <script>prettyPrint()</script>
 </html>
