@@ -1,5 +1,5 @@
 $baselineHeight: 23px;
-$baseFontSize: 16px;
+$baseFontSize: 15px;
 
 @function baseline($n) {
   @return $baselineHeight * $n;
