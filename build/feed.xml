@@ -5,24 +5,10 @@
   <id>http://anthonyshort.me/</id>
   <link href="http://anthonyshort.me/"/>
   <link href="http://anthonyshort.me/feed.xml" rel="self"/>
-  <updated>2012-03-11T00:00:00+11:00</updated>
+  <updated>2012-03-10T00:00:00+11:00</updated>
   <author>
     <name>Anthony Short</name>
   </author>
-  <entry>
-    <title>Taking Backbone Further</title>
-    <link rel="alternate" href="/2012/03/taking-backbone-further"/>
-    <id>/2012/03/taking-backbone-further.html</id>
-    <published>2012-03-11T00:00:00+11:00</published>
-    <updated>2012-03-11T00:00:00+11:00</updated>
-    <author>
-      <name>Anthony Short</name>
-    </author>
-    <summary type="html">&lt;hr /&gt;
-</summary>
-    <content type="html">&lt;hr /&gt;
-</content>
-  </entry>
   <entry>
     <title>SCSS Coding Style</title>
     <link rel="alternate" href="/2012/03/scss-coding-style"/>
