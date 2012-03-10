@@ -10,6 +10,20 @@
     <name>Anthony Short</name>
   </author>
   <entry>
+    <title>Taking Backbone Further</title>
+    <link rel="alternate" href="/2012/03/taking-backbone-further"/>
+    <id>/2012/03/taking-backbone-further.html</id>
+    <published>2012-03-10T00:00:00+11:00</published>
+    <updated>2012-03-10T00:00:00+11:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;p&gt;I've been using Sass now for the past few years and, dare I say it, before it was cool. I've used it on nearly every site I've built since then so I've had a fair bit of time to develop some habits. I thought I'd say some of my personal code style conventions. We've been using this with the team at Newism for a while now and it works fairly well.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;I've been using Sass now for the past few years and, dare I say it, before it was cool. I've used it on nearly every site I've built since then so I've had a fair bit of time to develop some habits. I thought I'd say some of my personal code style conventions. We've been using this with the team at Newism for a while now and it works fairly well.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>SCSS Coding Style</title>
     <link rel="alternate" href="/2012/03/scss-coding-style"/>
     <id>/2012/03/scss-coding-style.html</id>
