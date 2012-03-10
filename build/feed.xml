@@ -83,7 +83,7 @@
 &lt;/pre&gt;
 
 
-&lt;p&gt;Within a selector block I first define the @extends. It's almost like when defining and extending a class in PHP or Ruby. Having these at the top immediately shows what type of object you're dealing with and how it related to the rest of the objects in the stylesheet.&lt;/p&gt;
+&lt;p&gt;Within a selector block I first define the @extends. It's almost like when defining and extending a class in PHP or Ruby. Having these at the top immediately shows what type of object you're dealing with and how it's related to the rest of the objects in the stylesheet.&lt;/p&gt;
 
 &lt;pre class="prettyprint linenums"&gt;
 .class {

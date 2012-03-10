@@ -51,7 +51,7 @@ So here's a block of SCSS using the formatting guidelines I've developed:
 }
 </pre>
 
-Within a selector block I first define the @extends. It's almost like when defining and extending a class in PHP or Ruby. Having these at the top immediately shows what type of object you're dealing with and how it related to the rest of the objects in the stylesheet.
+Within a selector block I first define the @extends. It's almost like when defining and extending a class in PHP or Ruby. Having these at the top immediately shows what type of object you're dealing with and how it's related to the rest of the objects in the stylesheet.
 
 <pre class="prettyprint linenums">
 .class {
