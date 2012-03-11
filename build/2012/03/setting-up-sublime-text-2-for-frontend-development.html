@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="http://use.typekit.com/ffc4cqa.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		
+			<title>Setting up Sublime Text 2 for Front-End Development - Anthony Short</title>
+		
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28510069-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body class="is-article">
+
+    <header>
+      <hgroup>
+        <h1><a href="/">Anthony Short</a></h1>
+        <h2>Designer and Front-End Developer</h2>
+      </hgroup>
+    </header>
+    
+    
+      
+      <article id="content" class="hentry article">
+    <h1 class="entry-title">
+      Setting up Sublime Text 2 for Front-End Development 
+    </h1>
+    <time class="updated" pubdate>March 11 2012</time>
+    <div class="entry-content">
+      <p>A few weeks ago I decided to give <a href="http://www.sublimetext.com/2">Sublime Text 2</a> a try. I have a habit of switching text editors fairly frequently. Seeing as we sit staring at our text editors for the majority of the day I find it refreshing to switch editors every couple of months. I've heard good things about <a href="http://www.sublimetext.com/2">Sublime Text 2</a>. I spent some time setting it up this week just the way I like it. It has a lot of settings and options that can be a bit overwhelming.</p>
+
+<p>Most of my days are filled with front-end development - SCSS and Javascript - so I've tried to find addons for Sublime that would make my job easier.</p>
+
+<h2>Soda Theme</h2>
+
+<p>If you're a designer like me, the horrid UI will set you off Sublime instantly. There is a solution though. The first add-on you'll want to get is <a href="https://github.com/buymeasoda/soda-theme">Soda theme</a> by <a href="https://github.com/buymeasoda">Ian Hill</a>. This improves the UI and makes it much more Apple-like. As a bonus there are a couple of <a href="https://github.com/buymeasoda">nice syntax themes</a> that Ian has included with the project.</p>
+
+<p><figure>
+<img src="/images/2012/03/sublime-text-2/1.png"/>
+</figure></p>
+
+<h2>Package Manager</h2>
+
+<p>If you've used Textmate or Espresso you'll know about bundles (or 'sugars' for Espresso). There was never an easy way to install bundles from the app itself or a central repository for to find the bundles. Sublime has a brilliant <a href="http://wbond.net/sublime_packages/package_control">package manager</a> that you can install that makes finding and installing bundles a breeze.</p>
+
+<p>Just open up the console in Sublime by press control + ` and paste this in:</p>
+
+<pre style="padding:20px">
+import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+</pre>
+
+
+<p>Now you can install packages by pressing command + shift + p to bring up the command palette. Type 'install' and choose 'Package Control: Install Package'. It will bring up list a available packages you can install. Alternatively, if you don't know what you want you can <a href="http://wbond.net/sublime_packages/community">browse the packages online</a>.</p>
+
+<p>I found a few packages that are definitely worth looking at for front-end development. Remember you can install all of these directly from the package manager inside of Sublime:</p>
+
+<ul>
+<li><a href="http://www.sublimetext.com/forum/viewtopic.php?f=5&amp;t=3331">Sidebar Enhancements</a> - Adds much needed menu options to the sidebar.</li>
+<li><a href="http://wbond.net/sublime_packages/alignment">Alignment</a> - For aligning variables. Very useful for anyone anal about their code.</li>
+<li><a href="https://github.com/tomasztunik/Sublime-Text-2-Backbone.js-package">Backbone.js Bundle</a> - A few simple snippets for models, view and collections. It could definitely do with a few more snippets though.</li>
+<li><a href="https://github.com/Azd325/sublime-text-caniuse">Can I Use</a> - Lets you check support for a browser features using <a href="http://caniuse.com">caniuse.com</a>. Just select a work and press control + alt + f to search for it. Super handy.</li>
+<li><a href="https://github.com/weslly/ColorPicker">Colour Picker</a> - Extremely useful for CSS development. Just press command + shift + c to open the colour picker.</li>
+<li><a href="https://github.com/spadgos/sublime-jsdocs">DocBlockr</a> - Adds docblock support for many languages. Type <code>/**</code> above a function and press tab. Brilliant.</li>
+<li><a href="https://github.com/condemil/Gist">Gist</a> - Create, edit and use gists from your Github account right within Sublime. I've started using for all my snippets. I originally discovered this workflow in <a href="http://net.tutsplus.com/tutorials/tools-and-tips/sexy-code-snippet-management-with-gists/">this article from Nettuts</a>.</li>
+<li><a href="https://github.com/jdc0589/JsFormat">JSFormat</a> - Easily format a javascript file using completely customizable settings. Just press control + alt + f.</li>
+<li><a href="https://github.com/uipoet/sublime-jshint">JSLint</a> - Inline JSLinting. It highlights potential errors in a file. I honestly don't lint my JS that much nowadays. I've used it so much in th e past that I don't really need it anymore.</li>
+</ul>
+
+
+<p>There are a few others that add language-specific support, but I'm sure you'll be able to find them. There are a many, many more packages but these are the ones I've found most useful.</p>
+
+<h2>Taking it further</h2>
+
+<p>These are just some of the addons I've found to make Sublime more awesome. I'm still learning all of the shortcut keys but I'm really impressed with the application overall. It's the little things that are making it a joy to use. It takes a bit of getting used to and it's definitely not as pretty as Espresso but the language support is much better. Hopefully Espresso gets more language support and I can switch back. Unfortunately what makes a text editor popular are the bundles available for it and bundles can really only become abundant when an application is popular.</p>
+
+<p>It's been nice switching to a new editor. Maybe something new will come around in the next few months (like Chocolat) that can make work just a little bit more interesting again.</p>
+
+    </div>
+</article>
+    
+
+    
+    <footer>
+      <div>
+        <p>I'm Anthony Short. A web developer from Newcastle, Australia working at <a href="http://newism.com.au">Newism</a>. I specialise in front-end development. I have a love of everything Japan and Apple.</p>
+        <p>
+          <a href="http://twitter.com/anthonyshort">Twitter</a>. 
+          <a href="http://github.com/anthonyshort">Github</a>. 
+          <a href="mailto:anthony@anthonyshort.me">Email</a>.
+          <a href="http://feeds.feedburner.com/anthonyshort">RSS</a>.
+        </p>
+      </div>
+    </footer>
+    
+
+  </body>
+  <script src="/javascripts/prettify.js"></script>
+  <script>prettyPrint()</script>
+</html>
