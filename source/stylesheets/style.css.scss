@@ -14,7 +14,7 @@ a {
 }
 
 a:hover {
-	text-decoration:underline;
+	color:#ea7e15;
 }
 
 @font-face {
@@ -51,6 +51,9 @@ body {
 		@include image-replace('logo-small.png');
 		display:inline-block;
 		margin:baseline(2) 0 0;
+		&:hover{
+			background-image: image-url('logo-small-hover.png');
+		}
 	}
 	h2 {
 		display:none;
