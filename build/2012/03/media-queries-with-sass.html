@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="http://use.typekit.com/ffc4cqa.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		
+			<title>Media Queries with Sass 3.2 - Anthony Short</title>
+		
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28510069-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body class="is-article">
+
+    <header>
+      <hgroup>
+        <h1><a href="/">Anthony Short</a></h1>
+        <h2>Designer and Front-End Developer</h2>
+      </hgroup>
+    </header>
+    
+    
+      
+      <article id="content" class="hentry article">
+    <h1 class="entry-title">
+      Media Queries with Sass 3.2 
+    </h1>
+    <time class="updated" pubdate>March 13 2012</time>
+    <div class="entry-content">
+      <div class="notice">
+    <p>I've created <a href="https://gist.github.com/2028061">a gist over on Github</a> that implements lots of media queries using Sass 3.2 <code>@content</code> blocks.</p>
+</div>
+
+
+<p>A little known feature of the upcoming Sass 3.2 release is the <code>@content</code> rule. What this does is allow you to add blocks to your <code>@include</code> statements. Here's an example:</p>
+
+<pre class="prettyprint linenums">
+@mixin awesome {
+    .sauce {
+        @content;
+    }
+}
+.bottle {
+    @include awesome {
+        color:red;
+    }
+}
+</pre>
+
+
+<p>See how I've added a property block after the <code>@include</code>? This rather pointless example will generate something like this:</p>
+
+<pre class="prettyprint linenums">
+.bottle {
+    .sauce {
+        color:red;
+    }
+}
+</pre>
+
+
+<p>It's placed the block I added after the include where the <code>@content</code> rule was used in the mixin. The real benefit of this inception-style inclusion is that it allows us to do one, very, very, cool thing - <strong>inline media queries</strong>.</p>
+
+<p>I'd previously added a bunch of Sass media queries to my Compass extension, <a href="http://stitchcss.com">Stitch</a>, but I'm looking to expand on what I already have. This is one of the features I want to get into Compass 0.13. It changes the way we use media queries completely.</p>
+
+<p>I've created <a href="https://gist.github.com/2028061">a gist over on Github</a> that covers a lot of the basic media queries that we have to deal with every day. Here's a really simple example of what it can do:</p>
+
+<pre class="prettyprint linenums">
+.module {
+    @include mobile-only {
+        width:auto;
+        font-size:12px;
+    }
+    @include tablet-landscape-and-below {
+        width:600px;
+        font-size:14px;
+        .sidebar {
+            display:none;
+        }
+    }
+    @include desktop-only {
+        width:400px;
+        .sidebar {
+            width:200px;
+        }
+    }
+}
+</pre>
+
+
+<p><strong>Huzzah!</strong> Forget remembering media queries forever!</p>
+
+<p>I'm trying to develop some really extensive media queries using Sass. But I need some feedback. Only after some solid, real-world testing will they be ready for the prime-time.</p>
+
+<p>So if you get a chance, have a look at <a href="https://gist.github.com/2028061">the gist</a> and critique it. Media queries can be tricky and they can be used in lots of different ways.</p>
+
+    </div>
+</article>
+    
+
+    
+    <footer>
+      <div>
+        <p>I'm Anthony Short. A web developer from Newcastle, Australia working at <a href="http://newism.com.au">Newism</a>. I specialise in front-end development. I have a love of everything Japan and Apple.</p>
+        <p>
+          <a href="http://twitter.com/anthonyshort">Twitter</a>. 
+          <a href="http://github.com/anthonyshort">Github</a>. 
+          <a href="mailto:anthony@anthonyshort.me">Email</a>.
+          <a href="http://feeds.feedburner.com/anthonyshort">RSS</a>.
+        </p>
+      </div>
+    </footer>
+    
+
+  </body>
+  <script src="/javascripts/prettify.js"></script>
+  <script>prettyPrint()</script>
+</html>

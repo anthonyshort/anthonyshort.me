@@ -5,10 +5,94 @@
   <id>http://anthonyshort.me/</id>
   <link href="http://anthonyshort.me/"/>
   <link href="http://anthonyshort.me/feed.xml" rel="self"/>
-  <updated>2012-03-12T00:00:00+11:00</updated>
+  <updated>2012-03-13T00:00:00+11:00</updated>
   <author>
     <name>Anthony Short</name>
   </author>
+  <entry>
+    <title>Media Queries with Sass 3.2</title>
+    <link rel="alternate" href="/2012/03/media-queries-with-sass"/>
+    <id>/2012/03/media-queries-with-sass.html</id>
+    <published>2012-03-13T00:00:00+11:00</published>
+    <updated>2012-03-13T00:00:00+11:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;div class="notice"&gt;
+    &lt;p&gt;I've created &lt;a href="https://gist.github.com/2028061"&gt;a gist over on Github&lt;/a&gt; that implements lots of media queries using Sass 3.2 &lt;code&gt;@content&lt;/code&gt; blocks.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;A little known feature of the upcoming Sass 3.2 release is the &lt;code&gt;@content&lt;/code&gt; rule. What this does is allow you to add blocks to your &lt;code&gt;@include&lt;/code&gt; statements. Here's an example:&lt;/p&gt;
+</summary>
+    <content type="html">&lt;div class="notice"&gt;
+    &lt;p&gt;I've created &lt;a href="https://gist.github.com/2028061"&gt;a gist over on Github&lt;/a&gt; that implements lots of media queries using Sass 3.2 &lt;code&gt;@content&lt;/code&gt; blocks.&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;A little known feature of the upcoming Sass 3.2 release is the &lt;code&gt;@content&lt;/code&gt; rule. What this does is allow you to add blocks to your &lt;code&gt;@include&lt;/code&gt; statements. Here's an example:&lt;/p&gt;
+
+&lt;pre class="prettyprint linenums"&gt;
+@mixin awesome {
+    .sauce {
+        @content;
+    }
+}
+.bottle {
+    @include awesome {
+        color:red;
+    }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;See how I've added a property block after the &lt;code&gt;@include&lt;/code&gt;? This rather pointless example will generate something like this:&lt;/p&gt;
+
+&lt;pre class="prettyprint linenums"&gt;
+.bottle {
+    .sauce {
+        color:red;
+    }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;It's placed the block I added after the include where the &lt;code&gt;@content&lt;/code&gt; rule was used in the mixin. The real benefit of this inception-style inclusion is that it allows us to do one, very, very, cool thing - &lt;strong&gt;inline media queries&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I'd previously added a bunch of Sass media queries to my Compass extension, &lt;a href="http://stitchcss.com"&gt;Stitch&lt;/a&gt;, but I'm looking to expand on what I already have. This is one of the features I want to get into Compass 0.13. It changes the way we use media queries completely.&lt;/p&gt;
+
+&lt;p&gt;I've created &lt;a href="https://gist.github.com/2028061"&gt;a gist over on Github&lt;/a&gt; that covers a lot of the basic media queries that we have to deal with every day. Here's a really simple example of what it can do:&lt;/p&gt;
+
+&lt;pre class="prettyprint linenums"&gt;
+.module {
+    @include mobile-only {
+        width:auto;
+        font-size:12px;
+    }
+    @include tablet-landscape-and-below {
+        width:600px;
+        font-size:14px;
+        .sidebar {
+            display:none;
+        }
+    }
+    @include desktop-only {
+        width:400px;
+        .sidebar {
+            width:200px;
+        }
+    }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Huzzah!&lt;/strong&gt; Forget remembering media queries forever!&lt;/p&gt;
+
+&lt;p&gt;I'm trying to develop some really extensive media queries using Sass. But I need some feedback. Only after some solid, real-world testing will they be ready for the prime-time.&lt;/p&gt;
+
+&lt;p&gt;So if you get a chance, have a look at &lt;a href="https://gist.github.com/2028061"&gt;the gist&lt;/a&gt; and critique it. Media queries can be tricky and they can be used in lots of different ways.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>I'm on the Compass team!</title>
     <link rel="alternate" href="/2012/03/im-on-the-compass-team"/>

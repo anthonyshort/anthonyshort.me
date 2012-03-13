@@ -335,3 +335,12 @@ ol.linenums li {
   line-height: 18px;
   text-shadow: 0 1px 0 #000;
 }
+
+.notice {
+	border-radius:5px;
+	background:rgba(0,0,0,0.08);
+	padding:20px;
+	p:only-child {
+		margin:0;
+	}
+}
