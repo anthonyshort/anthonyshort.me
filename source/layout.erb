@@ -43,10 +43,12 @@
       <%= yield %>
     <% end %>
 
-    <% if is_blog_article? %>
     <footer>
       <div>
+        <% if is_blog_article? %>
         <p>I'm Anthony Short. A web developer from Newcastle, Australia working at <a href="http://newism.com.au">Newism</a>. I specialise in front-end development. I have a love of everything Japan and Apple.</p>
+        <% end %>
+        
         <p>
           <a href="http://twitter.com/anthonyshort">Twitter</a>. 
           <a href="http://github.com/anthonyshort">Github</a>. 
@@ -55,18 +57,6 @@
         </p>
       </div>
     </footer>
-    <% else %>
-    <footer>
-      <div>
-        <p>
-          <a href="http://twitter.com/anthonyshort">Twitter</a>. 
-          <a href="http://github.com/anthonyshort">Github</a>. 
-          <a href="mailto:anthony@anthonyshort.me">Email</a>.
-          <a href="http://feeds.feedburner.com/anthonyshort">RSS</a>.
-        </p>
-      </div>
-    </footer>
-    <% end %>
 
   </body>
   <script src="/javascripts/prettify.js"></script>
