@@ -50,9 +50,9 @@ body {
 		@include image-replace('logo-small-hover.png');
 		display:inline-block;
 		margin:baseline(2) 0 0;
-		// &:hover{
-		// 	background-image: image-url('logo-small-hover.png');
-		// }
+		&:hover{
+			background-image: image-url('logo-small-hover.png');
+		}
 	}
 	header h2 {
 		display:none;
