@@ -30,6 +30,8 @@ a:hover {
 }
 
 body {
+		border-top:3px solid #ea7e15;
+
   font-size:$baseFontSize;
   font-family:"adelle", Georgia, serif;
   font-style: normal;
@@ -60,7 +62,6 @@ body {
 }
 
 .is-index {
-	border-top:10px solid #ea7e15;
 	
 	header {		
 		text-align:center;
