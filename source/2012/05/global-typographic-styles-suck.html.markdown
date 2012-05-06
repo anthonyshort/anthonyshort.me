@@ -1,5 +1,5 @@
 --- 
-title: Global typographic styles suck - A better approach to CSS typography
+title: Global typographic styles suck
 date: 2012/05/06
 ---
 
