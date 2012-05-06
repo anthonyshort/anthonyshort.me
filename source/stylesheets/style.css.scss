@@ -92,10 +92,6 @@ body {
 	header h2 {
 		display:none;
 	}
-
-	footer {
-		text-align:center;
-	}
 }
 
 
@@ -132,6 +128,7 @@ h2 {
 footer {
 	margin:baseline(1) 0 baseline(3);
 	color:#777;
+	text-align:center;
 }
 
 footer div {
