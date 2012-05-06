@@ -11,7 +11,7 @@ I think we need to rethink this approach.
 
 **In my stylesheets I remove all global typographic styles from every element**. Instead I set these properties to inherit so that all the common elements on the page look the same way. List items no long have padding or bullets, links are no longer bold and add an underline on hover, headings no longer have margin and inherit their size and colour. 
 
-It sounds a lot like the global reset that has been around in various forms for the past 10 years. The difference is that I only target typographic elements. **I've moved all of these styles into a class appropriately named** @.copy@. Now I can apply this class to any block that I expect to behave like a block of formatted copy. 
+It sounds a lot like the global reset that has been around in various forms for the past 10 years. The difference is that I only target typographic elements. **I've moved all of these styles into a class appropriately named** <code>.copy</code>. Now I can apply this class to any block that I expect to behave like a block of formatted copy. 
 
 [Here's an example of a copy class](https://github.com/anthonyshort/Compass-Template/blob/master/media/screen/styleguide/_copy.scss) that I've used on past projects and [this is the reset file](https://github.com/anthonyshort/stitch-css/blob/master/stylesheets/stitch/_reset.scss) that sets text elements to inherit styles.
 
