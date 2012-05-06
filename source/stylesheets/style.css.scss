@@ -1,7 +1,7 @@
 @import 'stitch/patterns';
 
-$baselineHeight: 23px;
-$baseFontSize: 15px;
+$baselineHeight: 25px;
+$baseFontSize: 16px;
 
 @function baseline($n) {
   @return $baselineHeight * $n;
@@ -31,11 +31,11 @@ a:hover {
 
 body {
   font-size:$baseFontSize;
-	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+  font-family:"adelle", Georgia, serif;
   font-style: normal;
   // font-weight: 600;
   line-height:baseline(1);
-	color:#555;
+	color:#666;
 	margin:0;
 	background: #fff url('/images/denim.png');
 }
@@ -100,6 +100,7 @@ body {
 	font-size:30px;
 	padding:0 baseline(1.3);
 	line-height:34px;
+	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
 }
 
 p {
@@ -123,15 +124,12 @@ h2 {
 
 footer {
 	margin:baseline(1) 0 baseline(3);
-	text-align:center;
 	color:#777;
-	font-size:14px;
-	line-height:baseline(1);
 }
 
 footer div {
 	margin:0 auto;
-	max-width:550px - (baseline(1) * 2);
+	max-width:550px;
 	padding:18px baseline(1) 0;
 	//border-top:1px solid #ccc;
 }
@@ -160,20 +158,24 @@ footer div {
 
 	a {
 		text-decoration:underline;
+		font-weight:normal;
+		color:#444;
 	}
 
 	strong {
-		color:#333;
+		color:#444;
 	}
 }
 
 .article h1 {
 	text-align:center;
-	font-size:50px;
+	font-size:60px;
 	line-height:1;
 	font-weight:bold;
 	margin-bottom:baseline(2.5);
-	letter-spacing: -1px;
+	margin-top:baseline(1);
+	letter-spacing: -2px;
+	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
 }
 
 .article h2 {
@@ -182,14 +184,15 @@ footer div {
 	font-size:30px;
 	line-height:baseline(1.5);
 	margin: 45px 0 baseline(1);
+	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
 }
 
 .article time {
   display:block;
   text-align:center;
   margin:baseline(2) 0;
-  font-family: 'Helvetica', 'Arial','sans-serif';
   margin-top:-36px;
+  font-size:18px;
 
  &:before,
   &:after {
@@ -214,6 +217,7 @@ footer div {
 .article-index h2 a {
 	text-rendering:optimizeLegibility;
 	-webkit-font-smoothing:antialiased;
+	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
 }
 
 time {
@@ -228,6 +232,7 @@ time {
 	top:0px;
 	margin-top:baseline(0.5);
 	margin-right:baseline(0.5);
+	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
 }
 
 .article pre {
