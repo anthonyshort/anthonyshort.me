@@ -5,10 +5,44 @@
   <id>http://anthonyshort.me/</id>
   <link href="http://anthonyshort.me/"/>
   <link href="http://anthonyshort.me/feed.xml" rel="self"/>
-  <updated>2012-03-27T00:00:00+11:00</updated>
+  <updated>2012-05-06T00:00:00+10:00</updated>
   <author>
     <name>Anthony Short</name>
   </author>
+  <entry>
+    <title>Global typographic styles suck - A better approach to CSS typography</title>
+    <link rel="alternate" href="/2012/05/global-typographic-styles-suck"/>
+    <id>/2012/05/global-typographic-styles-suck.html</id>
+    <published>2012-05-06T00:00:00+10:00</published>
+    <updated>2012-05-06T00:00:00+10:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;p&gt;I hate global styles. I really do. For every line you add to an element selector globally you'll write dozens of lines of code removing that one style later down the road. There's a particular technique that I've been advocating a lot over the past year at work - removing all typographic styles from the global scope. Doing this allows you to remove hundreds of lines of code.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;I hate global styles. I really do. For every line you add to an element selector globally you'll write dozens of lines of code removing that one style later down the road. There's a particular technique that I've been advocating a lot over the past year at work - removing all typographic styles from the global scope. Doing this allows you to remove hundreds of lines of code.&lt;/p&gt;
+
+&lt;p&gt;Traditionally, we'll apply typographic styles to elements like strong, em, p, ul, h1, h2, h3 etc, in the global scope. We are adding these styles to the elements globally. We think to ourselves "we're using the cascade!" and wrongly thinking that we're saving lines of code in the long run.&lt;/p&gt;
+
+&lt;p&gt;I think we need to rethink this approach.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;In my stylesheets I remove all global typographic styles from every element&lt;/strong&gt;. Instead I set these properties to inherit so that all the common elements on the page look the same way. List items no long have padding or bullets, links are no longer bold and add an underline on hover, headings no longer have margin and inherit their size and colour.&lt;/p&gt;
+
+&lt;p&gt;It sounds a lot like the global reset that has been around in various forms for the past 10 years. The difference is that I only target typographic elements. &lt;strong&gt;I've moved all of these styles into a class appropriately named&lt;/strong&gt; @.copy@. Now I can apply this class to any block that I expect to behave like a block of formatted copy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/anthonyshort/Compass-Template/blob/master/media/screen/styleguide/_copy.scss"&gt;Here's an example of a copy class&lt;/a&gt; that I've used on past projects and &lt;a href="https://github.com/anthonyshort/stitch-css/blob/master/stylesheets/stitch/_reset.scss"&gt;this is the reset file&lt;/a&gt; that sets text elements to inherit styles.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The copy is a now a module.&lt;/strong&gt; I can create variations of these copy styles for user generated content or modify styles within other modules (like a sidebar block).&lt;/p&gt;
+
+&lt;p&gt;Removing all text styles from the global scope allows me to create buttons and navigation elements without needing to remove previous styles. I can turn an anchor into a button and I won't have to remove the underline on the links and change their font weight. I don't have to remove the bullet from the list items or remove the italic text from the emphasis tag. Headings within modules no longer need code to remove the margin so that they sit inside that box correctly.&lt;/p&gt;
+
+&lt;p&gt;Combining this approach with other modular techniques allows you to write selectors that only include the styles that they really need. Forget those lines of code that exists just to remove styles they've inherited from the global scope. For me global styles are now just as evil as global variables. Why would you globally style headings and links the way they appear in a single place?&lt;/p&gt;
+
+&lt;p&gt;I've found it difficult to explain why this approach is beneficial. It's difficult to give code examples. I'd probably have to build a site with and without global typographic styles to show the difference. Even then it doesn't prove just how much more maintainable the stylesheets become.&lt;/p&gt;
+
+&lt;p&gt;If you don't believe me then give this a go on your next project. You'll never go back.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Wintersmith - The Coffeescript Static Site Generator</title>
     <link rel="alternate" href="/2012/03/wintersmith-coffeescript-static-site-generator"/>
