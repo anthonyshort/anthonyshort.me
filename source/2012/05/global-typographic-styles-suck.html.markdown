@@ -24,3 +24,5 @@ Combining this approach with other modular techniques allows you to write select
 I've found it difficult to explain why this approach is beneficial. It's difficult to give code examples. I'd probably have to build a site with and without global typographic styles to show the difference. Even then it doesn't prove just how much more maintainable the stylesheets become.
 
 If you don't believe me then give this a go on your next project. You'll never go back.
+
+You can [comment on this post over on Github](https://github.com/anthonyshort/anthonyshort.me/issues/4).
