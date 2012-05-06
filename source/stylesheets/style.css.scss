@@ -37,7 +37,6 @@ body {
   line-height:baseline(1);
 	color:#666;
 	margin:0;
-	background: #fff url('/images/denim.png');
 }
 
 .is-article {
@@ -48,12 +47,12 @@ body {
 		margin:0;
 	}
 	header h1 a {
-		@include image-replace('logo-small.png');
+		@include image-replace('logo-small-hover.png');
 		display:inline-block;
 		margin:baseline(2) 0 0;
-		&:hover{
-			background-image: image-url('logo-small-hover.png');
-		}
+		// &:hover{
+		// 	background-image: image-url('logo-small-hover.png');
+		// }
 	}
 	header h2 {
 		display:none;
@@ -61,6 +60,8 @@ body {
 }
 
 .is-index {
+	border-top:10px solid #ea7e15;
+	
 	header {		
 		text-align:center;
 	}
@@ -90,6 +91,10 @@ body {
 	header h2 {
 		display:none;
 	}
+
+	footer {
+		text-align:center;
+	}
 }
 
 
@@ -97,10 +102,11 @@ body {
 	max-width:550px;
 	margin:baseline(2) auto;
 	text-align:center;
-	font-size:30px;
+	font-size:27px;
 	padding:0 baseline(1.3);
 	line-height:34px;
-	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+	//font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+	color:#222e3a;
 }
 
 p {
@@ -169,13 +175,13 @@ footer div {
 
 .article h1 {
 	text-align:center;
-	font-size:60px;
+	font-size:48px;
 	line-height:1;
 	font-weight:bold;
 	margin-bottom:baseline(2.5);
-	margin-top:baseline(1);
-	letter-spacing: -2px;
-	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+	margin-top:baseline(2);
+	letter-spacing: -1px;
+	color:#222e3a;
 }
 
 .article h2 {
@@ -217,7 +223,8 @@ footer div {
 .article-index h2 a {
 	text-rendering:optimizeLegibility;
 	-webkit-font-smoothing:antialiased;
-	font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+	//font-family: "ff-enzo-web", 'FFEnzoWeb-Medium', sans-serif;
+	color:#222e3a;
 }
 
 time {
