@@ -1,5 +1,5 @@
 --- 
-title: Package Management with Sass and Compass
+title: Using Bower with Sass and Compass
 date: 2012/10/28
 ---
 
