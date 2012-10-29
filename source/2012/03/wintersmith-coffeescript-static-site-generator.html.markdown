@@ -15,13 +15,13 @@ It's all fairly standard stuff but I'm considering switching to Wintersmith simp
 
 You can get Wintersmith from NPM:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 npm install wintersmith -g
 </pre>
 
 Then create a blog, run the server or build it.
 
-<pre class="prettyprint linenums lang-bsh">
+<pre class="prettyprint () lang-bsh">
 wintersmith new my-sweet-blog
 cd my-sweet-blog
 wintersmith preview

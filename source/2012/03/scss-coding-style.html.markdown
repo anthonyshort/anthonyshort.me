@@ -7,7 +7,7 @@ I've been using Sass now for the past few years and, dare I say it, before it wa
 
 So here's a block of SCSS using the formatting guidelines I've developed:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	@extend .other-class;
 	@extend .another-class;
@@ -53,7 +53,7 @@ So here's a block of SCSS using the formatting guidelines I've developed:
 
 Within a selector block I first define the @extends. It's almost like when defining and extending a class in PHP or Ruby. Having these at the top immediately shows what type of object you're dealing with and how it's related to the rest of the objects in the stylesheet.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	@extend .other-class;
 	@extend .another-class;
@@ -65,7 +65,7 @@ Within a selector block I first define the @extends. It's almost like when defin
 
 Second are the mixins. The general rule of thumb is to place all @-rules at the top of the block. This is an extremely strict rule. Try moving the @-rules around a block and you'll see that you'll constantly be wondering where styles are coming from. It's very important to get your whole team on board with this.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	...
 
@@ -78,7 +78,7 @@ Second are the mixins. The general rule of thumb is to place all @-rules at the 
 
 Third are the properties of the selector. I don't have any particular way of organising these. Some people alphabetize them and others group them. I feel these take too much time to maintain when weighed against the benefits. I should also mention that I generally stick to the spacing used in the example. Everything from the new lines after a section in the block to the spacing between property names and values.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	...
 
@@ -89,7 +89,7 @@ Third are the properties of the selector. I don't have any particular way of org
 
 Next I use the pseudo-selectors for the element. In this section I'm placing the styles related to the current, top-level element at the top of the block. As you go further down the block you are going to styles more loosely related to the parent. After this are combinator selectors using the parent selector (the ampersand). Again, following the rule of moving further away from the parent on the way down the block.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	...
 
@@ -104,7 +104,7 @@ Next I use the pseudo-selectors for the element. In this section I'm placing the
 
 Next are the child element selectors. These are targeting specific elements within the parent selector. Things like anchors and other inline-elements. Then following the same pattern I'll use the pseudo selectors.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .class {
 	...
 

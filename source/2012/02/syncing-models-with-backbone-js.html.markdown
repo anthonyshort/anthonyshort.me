@@ -19,7 +19,7 @@ Over-abstracting code too early is a trap that I've been caught in before so I w
 
 This would let me sync all the views instantly. Here's a dummy model that uses this idea. Let's assume that `Events` is whatever event emitter you're using across the app.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 Todo = Backbone.Model.extend({
     initialize: function(options){
 
@@ -44,7 +44,7 @@ You might think I could use `silent:true` but then if the change events never fi
 
 So I opted to use a flag that would prevent events firing on the secondary models when they were synced.
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 Todo = Backbone.Model.extend({
     initialize: function(options){
     

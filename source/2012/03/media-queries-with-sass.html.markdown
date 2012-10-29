@@ -9,7 +9,7 @@ date: 2012/03/13
 
 A little known feature of the upcoming Sass 3.2 release is the <code>@content</code> rule. What this does is allow you to add blocks to your <code>@include</code> statements. Here's an example:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 @mixin awesome {
 	.sauce {
 		@content;
@@ -24,7 +24,7 @@ A little known feature of the upcoming Sass 3.2 release is the <code>@content</c
 
 See how I've added a property block after the <code>@include</code>? This rather pointless example will generate something like this:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .bottle {
 	.sauce {
 		color:red;
@@ -38,7 +38,7 @@ I'd previously added a bunch of Sass media queries to my Compass extension, [Sti
 
 I've created [a gist over on Github](https://gist.github.com/2028061) that covers a lot of the basic media queries that we have to deal with every day. Here's a really simple example of what it can do:
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 .module {
 	@include mobile-only {
 		width:auto;

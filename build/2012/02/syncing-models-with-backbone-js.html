@@ -61,7 +61,7 @@
 
 <p>This would let me sync all the views instantly. Here's a dummy model that uses this idea. Let's assume that <code>Events</code> is whatever event emitter you're using across the app.</p>
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 Todo = Backbone.Model.extend({
     initialize: function(options){
 
@@ -87,7 +87,7 @@ Todo = Backbone.Model.extend({
 
 <p>So I opted to use a flag that would prevent events firing on the secondary models when they were synced.</p>
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint ()">
 Todo = Backbone.Model.extend({
     initialize: function(options){
     
