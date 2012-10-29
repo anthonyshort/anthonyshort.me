@@ -32,6 +32,14 @@ I would simply add this as a project on Github, add a `component.json` file and 
 
 A better example would probably be a grid framework written in Sass. They can be written in roughly 50 lines and can be extremely flexible. A perfect candidate. Rather than create a huge library with both of these components I could create individual components.
 
+Some other ideas for Sass components:
+
+* Form layout classes and mixins
+* Panel/Box/Alert
+* Basic list or navigation modules
+* Mixins for adding style to a site, like embossing or patterns
+* Dialog/Modals
+
 ## Installing Packages with Bower
 
 Now we want a nice way to include these components. Something like this:
