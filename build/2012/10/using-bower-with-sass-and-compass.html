@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="http://use.typekit.com/ffc4cqa.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		
+			<title>Using Bower with Sass and Compass - Anthony Short</title>
+		
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28510069-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body class="is-article">
+
+    <header>
+      <hgroup>
+        <h1><a href="/">Anthony Short</a></h1>
+        <h2>Designer and Front-End Developer</h2>
+      </hgroup>
+    </header>
+    
+    
+      
+      <article id="content" class="hentry article">
+    <h1 class="entry-title">
+      Using Bower with Sass and Compass 
+    </h1>
+    <time class="updated" pubdate>October 28 2012</time>
+    <div class="entry-content">
+      <p>Client-side package management claimed a bit of attention over the past few months with the public release of Twitter's <a href="http://twitter.github.com/bower/">Bower</a> and <a href="http://yeomain.io">Yeoman</a>. <a href="https://github.com/component/component">Component</a> is also pushing for smaller front end packages and already has hundreds of organised, tiny modules.</p>
+
+<p>I decided to write this article so that it will hopefully spark some interest in creating small, reusable components for Sass which are distributed via Bower (or any other package manager).</p>
+
+<p>The idea of having small, reusable packages is something we need to bring to Sass. We have things like Compass, Bourbon and Stitch but these are all giant libraries that are <strong>trying to do everything</strong>.</p>
+
+<p><a href="http://twitter.com/necolas">Necolas Gallagher</a> of Normalize fame has started putting together some tiny CSS packages on Bower, such as <a href="https://github.com/necolas/suit-utils">suit-utils</a> and <a href="https://github.com/necolas/suit-button">suit-button</a>. If you look at the <a href="https://github.com/necolas/suit-button/blob/master/button.css">button component</a> it's just a simple <code>.btn</code> class with some modifiers.</p>
+
+<p>For the record, I think every front end developer should read Necolas' <a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">article on front end architecture</a>.</p>
+
+<h2>Writing Packages</h2>
+
+<p>I'll start with a simple example. I might create a package that just includes the media block pattern:</p>
+
+<pre class="prettyprint lang-css">
+.media-block {
+  &:first-child {
+    float: left;
+    & + * {
+      overflow: hidden
+    }
+  }
+}
+</pre>
+
+
+<p>I would simply add this as a project on Github, add a <code>component.json</code> file and publish to Bower. Now I can install and reuse this chunk of code whenever I want. Obviously this is extremely tiny and probably not worth the effort. You probably want to flesh out the code and make it a bit more flexible.</p>
+
+<p>A better example would probably be a grid framework written in Sass. They can be written in roughly 50 lines and can be extremely flexible. A perfect candidate. Rather than create a huge library with both of these components I could create individual components.</p>
+
+<h2>Installing Packages with Bower</h2>
+
+<p>Now we want a nice way to include these components. Something like this:</p>
+
+<pre class="prettyprint">
+  @import 'normalize'
+  @import 'stitch/clearfix'
+  @import 'stitch/media-block'
+  @import 'stitch/text'
+  @import 'stitch/breakpoints'
+  @import 'suit-utils/display'
+  @import 'suit-utils/layout'
+  @import 'suit-button/button'
+</pre>
+
+
+<p>Traditionally it was easiest to create a Compass extension. Originally it made sense because Sass and Compass were installed as gems but this might not be the case forever. If you haven't used Bower I recommend going and having a play with it before you continue reading.</p>
+
+<p>I've chosen to use Bower for my front end needs as it's extremely simple. Here's my <code>component.json</code>:</p>
+
+<pre class="prettyprint">
+{
+  "name": "My Sass Project",
+  "version": "0.1.1",
+  "main": "./styles.css",
+  "dependencies": {
+    "normalize": "2.0.1",
+    "stitch-css": "0.2.0",
+    "suit-utils": "0.1.0",
+    "suit-button": "0.1.0"
+  }
+}
+</pre>
+
+
+<p>I generally prefer having a separate <code>component.json</code> for my Sass and for my Javascript.</p>
+
+<h2>Using Packages with Sass</h2>
+
+<p>Install these packages with <code>bower install</code> and then include them:</p>
+
+<pre class="prettyprint">
+  @import 'components/normalize/normalize'
+  @import 'components/suit-utils/display'
+  @import 'components/suit-utils/layout'
+  @import 'components/suit-button/button'
+</pre>
+
+
+<p>It doesn't really matter where you install your components but for the sake of this exercise, the components are being install directly into the Sass folder.</p>
+
+<p>If you want to tidy this up a little bit you can add some extra load paths. In your Compass config you need to add a couple of load paths so that when we type <code>@import 'suit-button/button'</code> Sass knows where to to look.</p>
+
+<pre class="prettyprint">
+  add_import_path "./components"
+  add_import_path "./components/normalize"
+  add_import_path "./components/stitch-css"
+</pre>
+
+
+<p>Or if you're using plain ol' Sass you can add it as an option:</p>
+
+<pre class="prettyprint">
+  sass --load-path ./components styles.sass:build/styles.css
+</pre>
+
+
+<p>Now in our code we can write things a little bit cleaner:</p>
+
+<pre class="prettyprint">
+  @import 'stitch'
+  @import 'normalize'
+  @import 'suit-utils/display'
+  @import 'suit-utils/layout'
+  @import 'suit-button/button'
+</pre>
+
+
+<p>We can install our components anywhere and update the import path so we can always use this short, sexy syntax. We have some really nice components that are managed via Bower. They are version locked and they can be easily updated. We get the benefit of a Compass extension but without relying on Ruby. These packages can also work without Compass if you want to remove another dependency from your stack.</p>
+
+<p>Unfortunately though, Sass will only import .scss or .sass files so the projects you add will need to have a Sass version which is slightly tedious. I've opened up <a href="https://github.com/nex3/sass/issues/556">an issue on Github</a> so hopefully we can get Sass to just import CSS files as Sass files somehow.</p>
+
+<p>Start thinking modular and small and stop creating huge libraries like Bourbon and Stitch. If you see patterns in your code emerging make them components and put them on Bower for everyone to use. Make them lean and make them light like Necolas' SUIT projects. They'll be easier to test and document.</p>
+
+    </div>
+</article>
+    
+
+    <footer>
+      <div>        
+        <p>
+          <a href="http://twitter.com/anthonyshort">Twitter</a>. 
+          <a href="http://github.com/anthonyshort">Github</a>. 
+          <a href="mailto:anthony@anthonyshort.me">Email</a>.
+          <a href="http://feeds.feedburner.com/anthonyshort">RSS</a>.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+  <script src="/javascripts/prettify.js"></script>
+  <script>prettyPrint()</script>
+</html>
