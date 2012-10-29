@@ -50,6 +50,17 @@
 
 &lt;p&gt;A better example would probably be a grid framework written in Sass. They can be written in roughly 50 lines and can be extremely flexible. A perfect candidate. Rather than create a huge library with both of these components I could create individual components.&lt;/p&gt;
 
+&lt;p&gt;Some other ideas for Sass components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Form layout classes and mixins&lt;/li&gt;
+&lt;li&gt;Panel/Box/Alert&lt;/li&gt;
+&lt;li&gt;Basic list or navigation modules&lt;/li&gt;
+&lt;li&gt;Mixins for adding style to a site, like embossing or patterns&lt;/li&gt;
+&lt;li&gt;Dialog/Modals&lt;/li&gt;
+&lt;/ul&gt;
+
+
 &lt;h2&gt;Installing Packages with Bower&lt;/h2&gt;
 
 &lt;p&gt;Now we want a nice way to include these components. Something like this:&lt;/p&gt;
