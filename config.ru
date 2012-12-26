@@ -8,5 +8,5 @@ use Rack::TryStatic, :root => "build", :urls => %w[/], :try => ['.html', 'index.
 require "rack/contrib/static_cache"
 # use Rack::StaticCache, :urls => ['/'], :root => 'build'
 
-require 'middleman'
-run Middleman.server
+#require 'middleman'
+#run Middleman.server
