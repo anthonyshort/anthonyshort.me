@@ -1,6 +1,6 @@
 --- 
 title: Building projects with Component(1)
-date: 2012/10/26
+date: 2012/12/26
 ---
 
 [Component(1)](http://github.com/component/component), if you haven't seen it, is a little package manager for the web. It's similar to Bower but it is a little more opinionated. All components are written using CommonJS-style code and they can include templates and CSS. It also comes with a build tool for compiling all of these components together.

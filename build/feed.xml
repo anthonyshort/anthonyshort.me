@@ -5,153 +5,16 @@
   <id>http://anthonyshort.me/</id>
   <link href="http://anthonyshort.me/"/>
   <link href="http://anthonyshort.me/feed.xml" rel="self"/>
-  <updated>2012-10-28T00:00:00+11:00</updated>
+  <updated>2012-12-26T00:00:00+11:00</updated>
   <author>
     <name>Anthony Short</name>
   </author>
   <entry>
-    <title>Using Bower with Sass and Compass</title>
-    <link rel="alternate" href="/2012/10/using-bower-with-sass-and-compass"/>
-    <id>/2012/10/using-bower-with-sass-and-compass.html</id>
-    <published>2012-10-28T00:00:00+11:00</published>
-    <updated>2012-10-28T00:00:00+11:00</updated>
-    <author>
-      <name>Anthony Short</name>
-    </author>
-    <summary type="html">&lt;p&gt;Client-side package management claimed a bit of attention over the past few months with the public release of Twitter's &lt;a href="http://twitter.github.com/bower/"&gt;Bower&lt;/a&gt; and &lt;a href="http://yeomain.io"&gt;Yeoman&lt;/a&gt;. &lt;a href="https://github.com/component/component"&gt;Component&lt;/a&gt; is also pushing for smaller front end packages and already has hundreds of organised, tiny modules.&lt;/p&gt;
-</summary>
-    <content type="html">&lt;p&gt;Client-side package management claimed a bit of attention over the past few months with the public release of Twitter's &lt;a href="http://twitter.github.com/bower/"&gt;Bower&lt;/a&gt; and &lt;a href="http://yeomain.io"&gt;Yeoman&lt;/a&gt;. &lt;a href="https://github.com/component/component"&gt;Component&lt;/a&gt; is also pushing for smaller front end packages and already has hundreds of organised, tiny modules.&lt;/p&gt;
-
-&lt;p&gt;I decided to write this article so that it will hopefully spark some interest in creating small, reusable components for Sass which are distributed via Bower (or any other package manager).&lt;/p&gt;
-
-&lt;p&gt;The idea of having small, reusable packages is something we need to bring to Sass. We have things like Compass, Bourbon and Stitch but these are all giant libraries that are &lt;strong&gt;trying to do everything&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://twitter.com/necolas"&gt;Necolas Gallagher&lt;/a&gt; of Normalize fame has started putting together some tiny CSS packages on Bower, such as &lt;a href="https://github.com/necolas/suit-utils"&gt;suit-utils&lt;/a&gt; and &lt;a href="https://github.com/necolas/suit-button"&gt;suit-button&lt;/a&gt;. If you look at the &lt;a href="https://github.com/necolas/suit-button/blob/master/button.css"&gt;button component&lt;/a&gt; it's just a simple &lt;code&gt;.btn&lt;/code&gt; class with some modifiers.&lt;/p&gt;
-
-&lt;p&gt;For the record, I think every front end developer should read Necolas' &lt;a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/"&gt;article on front end architecture&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Writing Packages&lt;/h2&gt;
-
-&lt;p&gt;I'll start with a simple example. I might create a package that just includes the media block pattern:&lt;/p&gt;
-
-&lt;pre class="prettyprint lang-css"&gt;
-.media-block {
-  &amp;:first-child {
-    float: left;
-    &amp; + * {
-      overflow: hidden
-    }
-  }
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;I would simply add this as a project on Github, add a &lt;code&gt;component.json&lt;/code&gt; file and publish to Bower. Now I can install and reuse this chunk of code whenever I want. Obviously this is extremely tiny and probably not worth the effort. You probably want to flesh out the code and make it a bit more flexible.&lt;/p&gt;
-
-&lt;p&gt;A better example would probably be a grid framework written in Sass. They can be written in roughly 50 lines and can be extremely flexible. A perfect candidate. Rather than create a huge library with both of these components I could create individual components.&lt;/p&gt;
-
-&lt;p&gt;Some other ideas for Sass components:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Form layout classes and mixins&lt;/li&gt;
-&lt;li&gt;Panel/Box/Alert&lt;/li&gt;
-&lt;li&gt;Basic list or navigation modules&lt;/li&gt;
-&lt;li&gt;Mixins for adding style to a site, like embossing or patterns&lt;/li&gt;
-&lt;li&gt;Dialog/Modals&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h2&gt;Installing Packages with Bower&lt;/h2&gt;
-
-&lt;p&gt;Now we want a nice way to include these components. Something like this:&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-  @import 'normalize'
-  @import 'stitch/clearfix'
-  @import 'stitch/media-block'
-  @import 'stitch/text'
-  @import 'stitch/breakpoints'
-  @import 'suit-utils/display'
-  @import 'suit-utils/layout'
-  @import 'suit-button/button'
-&lt;/pre&gt;
-
-
-&lt;p&gt;Traditionally it was easiest to create a Compass extension. Originally it made sense because Sass and Compass were installed as gems but this might not be the case forever. If you haven't used Bower I recommend going and having a play with it before you continue reading.&lt;/p&gt;
-
-&lt;p&gt;I've chosen to use Bower for my front end needs as it's extremely simple. Here's my &lt;code&gt;component.json&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-{
-  "name": "My Sass Project",
-  "version": "0.1.1",
-  "main": "./styles.css",
-  "dependencies": {
-    "normalize": "2.0.1",
-    "stitch-css": "0.2.0",
-    "suit-utils": "0.1.0",
-    "suit-button": "0.1.0"
-  }
-}
-&lt;/pre&gt;
-
-
-&lt;p&gt;I generally prefer having a separate &lt;code&gt;component.json&lt;/code&gt; for my Sass and for my Javascript.&lt;/p&gt;
-
-&lt;h2&gt;Using Packages with Sass&lt;/h2&gt;
-
-&lt;p&gt;Install these packages with &lt;code&gt;bower install&lt;/code&gt; and then include them:&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-  @import 'components/normalize/normalize'
-  @import 'components/suit-utils/display'
-  @import 'components/suit-utils/layout'
-  @import 'components/suit-button/button'
-&lt;/pre&gt;
-
-
-&lt;p&gt;It doesn't really matter where you install your components but for the sake of this exercise, the components are being install directly into the Sass folder.&lt;/p&gt;
-
-&lt;p&gt;If you want to tidy this up a little bit you can add some extra load paths. In your Compass config you need to add a couple of load paths so that when we type &lt;code&gt;@import 'suit-button/button'&lt;/code&gt; Sass knows where to to look.&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-  add_import_path "./components"
-  add_import_path "./components/normalize"
-  add_import_path "./components/stitch-css"
-&lt;/pre&gt;
-
-
-&lt;p&gt;Or if you're using plain ol' Sass you can add it as an option:&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-  sass --load-path ./components styles.sass:build/styles.css
-&lt;/pre&gt;
-
-
-&lt;p&gt;Now in our code we can write things a little bit cleaner:&lt;/p&gt;
-
-&lt;pre class="prettyprint"&gt;
-  @import 'stitch'
-  @import 'normalize'
-  @import 'suit-utils/display'
-  @import 'suit-utils/layout'
-  @import 'suit-button/button'
-&lt;/pre&gt;
-
-
-&lt;p&gt;We can install our components anywhere and update the import path so we can always use this short, sexy syntax. We have some really nice components that are managed via Bower. They are version locked and they can be easily updated. We get the benefit of a Compass extension but without relying on Ruby. These packages can also work without Compass if you want to remove another dependency from your stack.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately though, Sass will only import .scss or .sass files so the projects you add will need to have a Sass version which is slightly tedious. I've opened up &lt;a href="https://github.com/nex3/sass/issues/556"&gt;an issue on Github&lt;/a&gt; so hopefully we can get Sass to just import CSS files as Sass files somehow.&lt;/p&gt;
-
-&lt;p&gt;Start thinking modular and small and stop creating huge libraries like Bourbon and Stitch. If you see patterns in your code emerging make them components and put them on Bower for everyone to use. Make them lean and make them light like Necolas' SUIT projects. They'll be easier to test and document.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
     <title>Building projects with Component(1)</title>
     <link rel="alternate" href="/2012/12/building-projects-with-component"/>
     <id>/2012/12/building-projects-with-component.html</id>
-    <published>2012-10-26T00:00:00+11:00</published>
-    <updated>2012-10-26T00:00:00+11:00</updated>
+    <published>2012-12-26T00:00:00+11:00</published>
+    <updated>2012-12-26T00:00:00+11:00</updated>
     <author>
       <name>Anthony Short</name>
     </author>
@@ -291,6 +154,143 @@ configure: function(builder) {
 &lt;h2&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Component(1) is still the best package manager we have at the moment for front-end web components. The only way these tools will get better is if we use them. So if you're using grunt and Browserify (or any CommonJS builder), consider using Component(1) now as it will do the same thing and give you access to components.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using Bower with Sass and Compass</title>
+    <link rel="alternate" href="/2012/10/using-bower-with-sass-and-compass"/>
+    <id>/2012/10/using-bower-with-sass-and-compass.html</id>
+    <published>2012-10-28T00:00:00+11:00</published>
+    <updated>2012-10-28T00:00:00+11:00</updated>
+    <author>
+      <name>Anthony Short</name>
+    </author>
+    <summary type="html">&lt;p&gt;Client-side package management claimed a bit of attention over the past few months with the public release of Twitter's &lt;a href="http://twitter.github.com/bower/"&gt;Bower&lt;/a&gt; and &lt;a href="http://yeomain.io"&gt;Yeoman&lt;/a&gt;. &lt;a href="https://github.com/component/component"&gt;Component&lt;/a&gt; is also pushing for smaller front end packages and already has hundreds of organised, tiny modules.&lt;/p&gt;
+</summary>
+    <content type="html">&lt;p&gt;Client-side package management claimed a bit of attention over the past few months with the public release of Twitter's &lt;a href="http://twitter.github.com/bower/"&gt;Bower&lt;/a&gt; and &lt;a href="http://yeomain.io"&gt;Yeoman&lt;/a&gt;. &lt;a href="https://github.com/component/component"&gt;Component&lt;/a&gt; is also pushing for smaller front end packages and already has hundreds of organised, tiny modules.&lt;/p&gt;
+
+&lt;p&gt;I decided to write this article so that it will hopefully spark some interest in creating small, reusable components for Sass which are distributed via Bower (or any other package manager).&lt;/p&gt;
+
+&lt;p&gt;The idea of having small, reusable packages is something we need to bring to Sass. We have things like Compass, Bourbon and Stitch but these are all giant libraries that are &lt;strong&gt;trying to do everything&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://twitter.com/necolas"&gt;Necolas Gallagher&lt;/a&gt; of Normalize fame has started putting together some tiny CSS packages on Bower, such as &lt;a href="https://github.com/necolas/suit-utils"&gt;suit-utils&lt;/a&gt; and &lt;a href="https://github.com/necolas/suit-button"&gt;suit-button&lt;/a&gt;. If you look at the &lt;a href="https://github.com/necolas/suit-button/blob/master/button.css"&gt;button component&lt;/a&gt; it's just a simple &lt;code&gt;.btn&lt;/code&gt; class with some modifiers.&lt;/p&gt;
+
+&lt;p&gt;For the record, I think every front end developer should read Necolas' &lt;a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/"&gt;article on front end architecture&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Writing Packages&lt;/h2&gt;
+
+&lt;p&gt;I'll start with a simple example. I might create a package that just includes the media block pattern:&lt;/p&gt;
+
+&lt;pre class="prettyprint lang-css"&gt;
+.media-block {
+  &amp;:first-child {
+    float: left;
+    &amp; + * {
+      overflow: hidden
+    }
+  }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;I would simply add this as a project on Github, add a &lt;code&gt;component.json&lt;/code&gt; file and publish to Bower. Now I can install and reuse this chunk of code whenever I want. Obviously this is extremely tiny and probably not worth the effort. You probably want to flesh out the code and make it a bit more flexible.&lt;/p&gt;
+
+&lt;p&gt;A better example would probably be a grid framework written in Sass. They can be written in roughly 50 lines and can be extremely flexible. A perfect candidate. Rather than create a huge library with both of these components I could create individual components.&lt;/p&gt;
+
+&lt;p&gt;Some other ideas for Sass components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Form layout classes and mixins&lt;/li&gt;
+&lt;li&gt;Panel/Box/Alert&lt;/li&gt;
+&lt;li&gt;Basic list or navigation modules&lt;/li&gt;
+&lt;li&gt;Mixins for adding style to a site, like embossing or patterns&lt;/li&gt;
+&lt;li&gt;Dialog/Modals&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;Installing Packages with Bower&lt;/h2&gt;
+
+&lt;p&gt;Now we want a nice way to include these components. Something like this:&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+  @import 'normalize'
+  @import 'stitch/clearfix'
+  @import 'stitch/media-block'
+  @import 'stitch/text'
+  @import 'stitch/breakpoints'
+  @import 'suit-utils/display'
+  @import 'suit-utils/layout'
+  @import 'suit-button/button'
+&lt;/pre&gt;
+
+
+&lt;p&gt;Traditionally it was easiest to create a Compass extension. Originally it made sense because Sass and Compass were installed as gems but this might not be the case forever. If you haven't used Bower I recommend going and having a play with it before you continue reading.&lt;/p&gt;
+
+&lt;p&gt;I've chosen to use Bower for my front end needs as it's extremely simple. Here's my &lt;code&gt;component.json&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+{
+  "name": "My Sass Project",
+  "version": "0.1.1",
+  "main": "./styles.css",
+  "dependencies": {
+    "normalize": "2.0.1",
+    "stitch-css": "0.2.0",
+    "suit-utils": "0.1.0",
+    "suit-button": "0.1.0"
+  }
+}
+&lt;/pre&gt;
+
+
+&lt;p&gt;I generally prefer having a separate &lt;code&gt;component.json&lt;/code&gt; for my Sass and for my Javascript.&lt;/p&gt;
+
+&lt;h2&gt;Using Packages with Sass&lt;/h2&gt;
+
+&lt;p&gt;Install these packages with &lt;code&gt;bower install&lt;/code&gt; and then include them:&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+  @import 'components/normalize/normalize'
+  @import 'components/suit-utils/display'
+  @import 'components/suit-utils/layout'
+  @import 'components/suit-button/button'
+&lt;/pre&gt;
+
+
+&lt;p&gt;It doesn't really matter where you install your components but for the sake of this exercise, the components are being install directly into the Sass folder.&lt;/p&gt;
+
+&lt;p&gt;If you want to tidy this up a little bit you can add some extra load paths. In your Compass config you need to add a couple of load paths so that when we type &lt;code&gt;@import 'suit-button/button'&lt;/code&gt; Sass knows where to to look.&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+  add_import_path "./components"
+  add_import_path "./components/normalize"
+  add_import_path "./components/stitch-css"
+&lt;/pre&gt;
+
+
+&lt;p&gt;Or if you're using plain ol' Sass you can add it as an option:&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+  sass --load-path ./components styles.sass:build/styles.css
+&lt;/pre&gt;
+
+
+&lt;p&gt;Now in our code we can write things a little bit cleaner:&lt;/p&gt;
+
+&lt;pre class="prettyprint"&gt;
+  @import 'stitch'
+  @import 'normalize'
+  @import 'suit-utils/display'
+  @import 'suit-utils/layout'
+  @import 'suit-button/button'
+&lt;/pre&gt;
+
+
+&lt;p&gt;We can install our components anywhere and update the import path so we can always use this short, sexy syntax. We have some really nice components that are managed via Bower. They are version locked and they can be easily updated. We get the benefit of a Compass extension but without relying on Ruby. These packages can also work without Compass if you want to remove another dependency from your stack.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately though, Sass will only import .scss or .sass files so the projects you add will need to have a Sass version which is slightly tedious. I've opened up &lt;a href="https://github.com/nex3/sass/issues/556"&gt;an issue on Github&lt;/a&gt; so hopefully we can get Sass to just import CSS files as Sass files somehow.&lt;/p&gt;
+
+&lt;p&gt;Start thinking modular and small and stop creating huge libraries like Bourbon and Stitch. If you see patterns in your code emerging make them components and put them on Bower for everyone to use. Make them lean and make them light like Necolas' SUIT projects. They'll be easier to test and document.&lt;/p&gt;
 </content>
   </entry>
   <entry>
