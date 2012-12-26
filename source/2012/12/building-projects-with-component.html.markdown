@@ -1,5 +1,5 @@
 --- 
-title: Building projects with Component(1)
+title: Building projects with Component
 date: 2012/12/26
 ---
 
