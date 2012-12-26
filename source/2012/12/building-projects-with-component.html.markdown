@@ -15,38 +15,7 @@ It's on the right track but there are a couple of things that have been annoying
 
 I've solved all of these by making a grunt plugin - [grunt-component-build](http://github.com/anthonyshort/grunt-component-build). This is a custom implemetation of the Component(1) builder that allows me to use grunt to build components as well as add a couple of extra features.
 
-## Standalone Library
-
-The easiest way to get Component into your project is to use it the way you would use any other library. Basically, we'll be making a component to export the Component require. It seems crazy, but it allows us to encapsulate the Component functionality and use it like a library. Here's how we want to use it:
-
-```js
-var tip = component('tip');
-var dialog = component('dialog');
-```
-
-Create a folder for your components, put the `component.json` file in there. Add an `index.js` file in there as well with code:
-
-```js
-module.exports = require;
-```
-
-Seems strange. But what this will do is export the Component require function. When we build the components as a standalone library we'll have access to it. Now build with this command:
-
-```
-component build --standalone component
-```
-
-This will compile all of the installed components together and export it as `window.component`. We created the `index.js` file as that is what is exposed to `window.component`. 
-
-If this is all a bit confusing, remember that the require function created by Component (the one that lets you import components) is wrapped in an immediate function and isn't accessible globally when built with `---standalone`. We're basically just exporting that require function again but under a different name to prevent collisions with other libraries that might use a require function.
-
-## One Big Component
-
-The original idea behind component was that you would build your entire project with components. Every part of the application would be a component. If you need a list of tasks you would make it a component that would include the template for the list, the list item, the class for the model, the view etc. It is how you would normally encapsulate things but you make it a component instead, meaning there were some rules and limitations. 
-
-I'm still not sold on this idea just yet. If I could see an example of a large project built this way it might change my mind.
-
-## Custom Builder Using Grunt
+## Building Components with Grunt
 
 Currently I use Browserify for building out projects. It allows me to use CommonJS style code, I don't need to mess around with AMD modules or Require.js. It's pragmatic, it's easy, it's awesome. Browserify lets you use node modules in your code. This is great but npm wasn't really made for browsers. We have different problems to solve.
 
@@ -54,7 +23,7 @@ If you use Browserify you can use Component as a standalone library. But I'd rat
 
 So I made [grunt-component-build](http://github.com/anthonyshort/grunt-component-build). This uses the same builder that Component uses when you run `component build` but it allows you to configure it within your grunt file. Additionally, it allows you to easily add plugins to extend the functionality of Component. Here's what a grunt task might look like:
 
-```
+<pre class="prettyprint lang-js">
 component: {
   app: {
     standalone: 'app',
@@ -67,11 +36,11 @@ component: {
     }
   }
 }
-```
+</pre>
 
 And here's the `component.json` file:
 
-```
+<pre class="prettyprint lang-js">
 {
   "name": "app",
   "private": true,
@@ -84,7 +53,7 @@ And here's the `component.json` file:
     "templates/**/*.html",
   ]
 }
-```
+</pre>
 
 Here are some things you can do with grunt-component-build;
 

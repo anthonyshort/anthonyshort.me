@@ -35,38 +35,7 @@
 
 &lt;p&gt;I've solved all of these by making a grunt plugin - &lt;a href="http://github.com/anthonyshort/grunt-component-build"&gt;grunt-component-build&lt;/a&gt;. This is a custom implemetation of the Component(1) builder that allows me to use grunt to build components as well as add a couple of extra features.&lt;/p&gt;
 
-&lt;h2&gt;Standalone Library&lt;/h2&gt;
-
-&lt;p&gt;The easiest way to get Component into your project is to use it the way you would use any other library. Basically, we'll be making a component to export the Component require. It seems crazy, but it allows us to encapsulate the Component functionality and use it like a library. Here's how we want to use it:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;js
-var tip = component('tip');
-var dialog = component('dialog');
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Create a folder for your components, put the &lt;code&gt;component.json&lt;/code&gt; file in there. Add an &lt;code&gt;index.js&lt;/code&gt; file in there as well with code:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;js
-module.exports = require;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Seems strange. But what this will do is export the Component require function. When we build the components as a standalone library we'll have access to it. Now build with this command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-component build --standalone component
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This will compile all of the installed components together and export it as &lt;code&gt;window.component&lt;/code&gt;. We created the &lt;code&gt;index.js&lt;/code&gt; file as that is what is exposed to &lt;code&gt;window.component&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;If this is all a bit confusing, remember that the require function created by Component (the one that lets you import components) is wrapped in an immediate function and isn't accessible globally when built with &lt;code&gt;---standalone&lt;/code&gt;. We're basically just exporting that require function again but under a different name to prevent collisions with other libraries that might use a require function.&lt;/p&gt;
-
-&lt;h2&gt;One Big Component&lt;/h2&gt;
-
-&lt;p&gt;The original idea behind component was that you would build your entire project with components. Every part of the application would be a component. If you need a list of tasks you would make it a component that would include the template for the list, the list item, the class for the model, the view etc. It is how you would normally encapsulate things but you make it a component instead, meaning there were some rules and limitations.&lt;/p&gt;
-
-&lt;p&gt;I'm still not sold on this idea just yet. If I could see an example of a large project built this way it might change my mind.&lt;/p&gt;
-
-&lt;h2&gt;Custom Builder Using Grunt&lt;/h2&gt;
+&lt;h2&gt;Building Components with Grunt&lt;/h2&gt;
 
 &lt;p&gt;Currently I use Browserify for building out projects. It allows me to use CommonJS style code, I don't need to mess around with AMD modules or Require.js. It's pragmatic, it's easy, it's awesome. Browserify lets you use node modules in your code. This is great but npm wasn't really made for browsers. We have different problems to solve.&lt;/p&gt;
 
@@ -74,46 +43,39 @@ component build --standalone component
 
 &lt;p&gt;So I made &lt;a href="http://github.com/anthonyshort/grunt-component-build"&gt;grunt-component-build&lt;/a&gt;. This uses the same builder that Component uses when you run &lt;code&gt;component build&lt;/code&gt; but it allows you to configure it within your grunt file. Additionally, it allows you to easily add plugins to extend the functionality of Component. Here's what a grunt task might look like:&lt;/p&gt;
 
-&lt;p&gt;```
+&lt;pre class="prettyprint lang-js"&gt;
 component: {
-  app: {&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;standalone: 'app',
-output: './dist/',
-config: './component.json',
-styles: false,
-plugins: ['templates', 'coffee'], // built-in plugins
-configure: function(builder) {
-  // Do things with the builder. Add more plugins etc.
+  app: {
+    standalone: 'app',
+    output: './dist/',
+    config: './component.json',
+    styles: false,
+    plugins: ['templates', 'coffee'], // built-in plugins
+    configure: function(builder) {
+      // Do things with the builder. Add more plugins etc.
+    }
+  }
 }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;
 
-&lt;p&gt;  }
-}
-```&lt;/p&gt;
 
 &lt;p&gt;And here's the &lt;code&gt;component.json&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;p&gt;```
+&lt;pre class="prettyprint lang-js"&gt;
 {
   "name": "app",
   "private": true,
   "paths": [ "lib" ],
-  "scripts": [&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;"index.js",
-"src/**/*.coffee"
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;  ],
-  "templates": [&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;"templates/**/*.html",
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;  ]
+  "scripts": [
+    "index.js",
+    "src/**/*.coffee"
+  ],
+  "templates": [
+    "templates/**/*.html",
+  ]
 }
-```&lt;/p&gt;
+&lt;/pre&gt;
+
 
 &lt;p&gt;Here are some things you can do with grunt-component-build;&lt;/p&gt;
 
