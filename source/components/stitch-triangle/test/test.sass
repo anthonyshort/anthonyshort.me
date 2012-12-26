@@ -1,0 +1,25 @@
+@import '../triangle'
+
+.triangle-1
+  @include triangle($direction: 'bottom', $width: 100px, $height: 50px, $color: #000)
+
+.triangle-2
+  @include triangle($direction: 'top', $width: 100px, $height: 50px, $color: #000)
+
+.triangle-3
+  @include triangle($direction: 'right', $width: 50px, $height: 100px, $color: #000)
+
+.triangle-4
+  @include triangle($direction: 'left', $width: 50px, $height: 100px, $color: #000)
+
+.triangle-5
+  @include triangle($direction: 'top-right', $width: 50px, $height: 50px, $color: #000)
+
+.triangle-6
+  @include triangle($direction: 'top-left', $width: 50px, $height: 50px, $color: #000)
+
+.triangle-7
+  @include triangle($direction: 'bottom-left', $width: 50px, $height: 50px, $color: #000)
+
+.triangle-8
+  @include triangle($direction: 'bottom-right', $width: 50px, $height: 50px, $color: #000)
