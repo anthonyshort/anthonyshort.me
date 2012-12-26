@@ -8,5 +8,5 @@
 #require "rack/contrib/static_cache"
 #use Rack::StaticCache, :urls => ['/'], :root => 'build'
 
-require 'middleman'
-run Middleman.server
+#require 'middleman'
+#run Middleman.server
