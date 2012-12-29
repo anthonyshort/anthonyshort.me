@@ -1,0 +1,55 @@
+$baselineHeight: 23px;
+$baseFontSize: 15px;
+
+@function baseline($n) {
+  @return $baselineHeight * $n;
+}
+
+@font-face {
+  font-family: 'FFEnzoWeb';
+  font-weight:normal;
+  src: local('FFEnzoWeb-Medium');
+}
+
+@font-face {
+  font-family: 'FFEnzoWeb';
+  font-weight:bold;
+  src: local('FFEnzoWeb-Bold');
+}
+
+body {
+  font-size:$baseFontSize;
+  font-family:"adelle", Georgia, serif;
+  font-style: normal;
+  // font-weight: 600;
+  line-height:baseline(1);
+}
+
+a {
+  color:#333;
+  font-weight:700;
+  text-decoration:none;
+}
+
+a:hover {
+  color:#ea7e15;
+}
+
+p {
+  margin:baseline(1) 0;
+}
+
+h1,
+h2,
+h3 {
+  color:#333;
+}
+
+h1 {
+  font-size:baseline(2);
+}
+
+h2 {
+  font-size:27px;
+  margin:baseline(1.5) 0 baseline(1);
+}

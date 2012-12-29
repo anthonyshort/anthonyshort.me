@@ -77,6 +77,7 @@ set :markdown_engine, :rdiscount
 
 set :blog_permalink, ":year/:month/:title.html"
 page "/feed.xml", :layout => false
+page "/about", :layout => false
 
 # Build-specific configuration
 configure :build do

@@ -1,0 +1,61 @@
+@import 'common';
+
+body { 
+  transition: 1s ease-in-out;
+  transition-property: background-position, background-size;
+  -webkit-transform: translate3d(0,0,0);
+  background: url('/images/me.jpg') center left no-repeat #faebca;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  color: rgba(#1d0f33, 0.8);
+
+  @media ( max-width: 985px ) {
+    background-position: -200px 0;
+  }
+
+  @media ( max-width: 780px ) {
+    background-position: -300px 0;
+  }
+
+  @media ( max-width: 680px ) {
+    background-position: -400px 0;
+  }
+
+  @media ( max-width: 580px ) {
+    background-position: -200px 0;
+    &:after {
+      content: '';
+      display: block;
+      background: #faebca;
+      opacity: 0.8;
+      position: absolute;
+      z-index: 1;
+      top: -100px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+#content {
+  background: url('/images/logo-about.png') no-repeat top center;
+  width: 360px; 
+  padding: 80px 0 0 0; 
+  margin: 50px 100px 0 auto; 
+  position: relative;
+  z-index: 2;
+
+  @media ( max-width: 580px ) {
+    margin-right: auto;
+    width: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+a {
+  text-decoration: underline;
+}
