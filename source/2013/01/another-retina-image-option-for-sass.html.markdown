@@ -96,7 +96,7 @@ You'll end up with something like this:
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
   .foo {
     background-image: url("foo@2x.png");
-    background-size: "50%" "auto";
+    background-size: 50% auto;
   }
 }
 </pre>
