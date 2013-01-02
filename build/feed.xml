@@ -28,7 +28,7 @@
 
 &lt;p&gt;This mixin doesn't rely on Compass so you can use it with plain Sass. It could be a little more flexible with Compass but I'm keeping it simple. It will also be easier when we get &lt;a href="https://github.com/nex3/sass/pull/401"&gt;more string functions&lt;/a&gt; in Sass.&lt;/p&gt;
 
-&lt;pre data-lang="scss"&gt;
+&lt;pre class="prettyprint lang-scss"&gt;
 @mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
   .no-retina &amp; {
     background-image: url("#{$image}.#{$type}");
@@ -43,14 +43,9 @@
 
 &lt;p&gt;And then do something similar to this:&lt;/p&gt;
 
-&lt;pre data-lang="js"&gt;
-var el = document.getElementsByType('html')[0]; 
-if( window.matchMedia and window.matchMedia('
-  (min--moz-device-pixel-ratio: 1.3),
-  (-o-min-device-pixel-ratio: 2.6/2),
-  (-webkit-min-device-pixel-ratio: 1.3),
-  (min-device-pixel-ratio: 1.3),
-  (min-resolution: 1.3dppx)').matches ) {
+&lt;pre class="prettyprint lang-js"&gt;
+var el = document.getElementsByTagName('html')[0]; 
+if( window.matchMedia and window.matchMedia('(min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx)').matches ) {
   el.classList.add('retina')
   el.classList.remove('no-retina')
 }
@@ -69,7 +64,7 @@ if( window.matchMedia and window.matchMedia('
 
 &lt;p&gt;Here's what it might look like:&lt;/p&gt;
 
-&lt;pre data-lang="scss"&gt;
+&lt;pre class="prettyprint lang-scss"&gt;
 @mixin non-retina {
   @media (min--moz-device-pixel-ratio: 1),
   (-o-min-device-pixel-ratio: 1),
@@ -109,7 +104,7 @@ if( window.matchMedia and window.matchMedia('
 
 &lt;p&gt;You'll end up with something like this:&lt;/p&gt;
 
-&lt;pre data-lang="css"&gt;
+&lt;pre class="prettyprint lang-css"&gt;
 @media (min--moz-device-pixel-ratio: 1), (-o-min-device-pixel-ratio: 1), (-webkit-min-device-pixel-ratio: 1), (min-device-pixel-ratio: 1), (min-resolution: 1dppx) {
   .foo {
     background-image: url("foo.png");

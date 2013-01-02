@@ -11,7 +11,7 @@ The main problem with a lot of techniques is that both images are downloaded. We
 
 This mixin doesn't rely on Compass so you can use it with plain Sass. It could be a little more flexible with Compass but I'm keeping it simple. It will also be easier when we get [more string functions](https://github.com/nex3/sass/pull/401) in Sass.
 
-<pre data-lang="scss">
+<pre class="prettyprint lang-scss">
 @mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
   .no-retina & {
     background-image: url("#{$image}.#{$type}");
@@ -25,14 +25,9 @@ This mixin doesn't rely on Compass so you can use it with plain Sass. It could b
 
 And then do something similar to this:
 
-<pre data-lang="js">
-var el = document.getElementsByType('html')[0]; 
-if( window.matchMedia and window.matchMedia('
-  (min--moz-device-pixel-ratio: 1.3),
-  (-o-min-device-pixel-ratio: 2.6/2),
-  (-webkit-min-device-pixel-ratio: 1.3),
-  (min-device-pixel-ratio: 1.3),
-  (min-resolution: 1.3dppx)').matches ) {
+<pre class="prettyprint lang-js">
+var el = document.getElementsByTagName('html')[0]; 
+if( window.matchMedia and window.matchMedia('(min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx)').matches ) {
   el.classList.add('retina')
   el.classList.remove('no-retina')
 }
@@ -50,7 +45,7 @@ We create a mixin for non-retina displays (and devices with no media queries) an
 
 Here's what it might look like:
 
-<pre data-lang="scss">
+<pre class="prettyprint lang-scss">
 @mixin non-retina {
   @media (min--moz-device-pixel-ratio: 1),
   (-o-min-device-pixel-ratio: 1),
@@ -89,7 +84,7 @@ This relies on you being able to target IE8 or below which don't have support fo
 
 You'll end up with something like this:
 
-<pre data-lang="css">
+<pre class="prettyprint lang-css">
 @media (min--moz-device-pixel-ratio: 1), (-o-min-device-pixel-ratio: 1), (-webkit-min-device-pixel-ratio: 1), (min-device-pixel-ratio: 1), (min-resolution: 1dppx) {
   .foo {
     background-image: url("foo.png");
