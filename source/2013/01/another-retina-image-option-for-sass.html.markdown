@@ -12,7 +12,7 @@ The main problem with a lot of techniques is that both images are downloaded. We
 This mixin doesn't rely on Compass so you can use it with plain Sass. It could be a little more flexible with Compass but I'm keeping it simple. It will also be easier when we get [more string functions](https://github.com/nex3/sass/pull/401) in Sass.
 
 <pre class="prettyprint lang-scss">
-@mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
+@mixin retina-background-image($image, $width: 50%, $height: auto, $type: 'png') {
   .no-retina & {
     background-image: url("#{$image}.#{$type}");
   }
@@ -69,7 +69,7 @@ Here's what it might look like:
   }
 }
 
-@mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
+@mixin retina-background-image($image, $width: 50%, $height: auto, $type: 'png') {
   @include non-retina {
     background-image: url("#{$image}.#{$type}");
   }
