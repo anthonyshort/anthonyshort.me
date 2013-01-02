@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="http://use.typekit.com/ffc4cqa.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		
+			<title>Another Retina Image Option for Sass - Anthony Short</title>
+		
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28510069-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+  </head>
+  <body class="is-article">
+
+    <header>
+      <hgroup>
+        <h1><a href="/">Anthony Short</a></h1>
+        <h2>Designer and Front-End Developer</h2>
+      </hgroup>
+    </header>
+    
+    
+      
+      <article id="content" class="hentry article">
+    <h1 class="entry-title">
+      Another Retina Image Option for Sass 
+    </h1>
+    <time class="updated" pubdate>January  2 2013</time>
+    <div class="entry-content">
+      <p>Yeah I know. There are already a few solutions out there for using retina images using sass, like <a href="http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss">this</a>, and <a href="https://github.com/joelambert/Retina-Compass-Helpers">this</a>. This way does bloat your file a fair bit so here's how I'm doing it at the moment.</p>
+
+<p>The main problem with a lot of techniques is that both images are downloaded. We can do better than that.</p>
+
+<h2>With Javascript</h2>
+
+<p>This mixin doesn't rely on Compass so you can use it with plain Sass. It could be a little more flexible with Compass but I'm keeping it simple. It will also be easier when we get <a href="https://github.com/nex3/sass/pull/401">more string functions</a> in Sass.</p>
+
+<pre data-lang="scss">
+@mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
+  .no-retina & {
+    background-image: url("#{$image}.#{$type}");
+  }
+  .retina & {
+    background-image: url("#{$image}@2x.#{$type}");
+    background-size: $width $height;
+  }
+}
+</pre>
+
+
+<p>And then do something similar to this:</p>
+
+<pre data-lang="js">
+var el = document.getElementsByType('html')[0]; 
+if( window.matchMedia and window.matchMedia('
+  (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx)').matches ) {
+  el.classList.add('retina')
+  el.classList.remove('no-retina')
+}
+</pre>
+
+
+<p>And add a class of <code>.no-retina</code> to the html element on your page so that it works without JS.</p>
+
+<p>Because the retina screens won't have CSS selectors that match it, they won't download the image, ever. We also don't get media query bloat everywhere. If someone happens to have JS turned off, they don't get retina images. I prefer this method, it's simple.</p>
+
+<h2>Without Javascript</h2>
+
+<p>If you don't really care about filesize because all of those media queries will be compressed to nothing anyway you could do something similar with a couple of other mixins and no need for JS.</p>
+
+<p>We create a mixin for non-retina displays (and devices with no media queries) and give those the standard image. This will stop the retina devices from downloading them.</p>
+
+<p>Here's what it might look like:</p>
+
+<pre data-lang="scss">
+@mixin non-retina {
+  @media (min--moz-device-pixel-ratio: 1),
+  (-o-min-device-pixel-ratio: 1),
+  (-webkit-min-device-pixel-ratio: 1),
+  (min-device-pixel-ratio: 1),
+  (min-resolution: 1dppx) {
+    @content;
+  }
+  .no-mediaqueries & {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    @content;
+  }
+}
+
+@mixin retina-background-image($image, $width: '50%', $height: 'auto', $type: 'png') {
+  @include non-retina {
+    background-image: url("#{$image}.#{$type}");
+  }
+  @include retina {
+    background-image: url("#{$image}@2x.#{$type}");
+    background-size: $width $height;
+  }
+}
+</pre>
+
+
+<p>This relies on you being able to target IE8 or below which don't have support for media queries. I generally use Modernizr so this isn't a problem.</p>
+
+<p>You'll end up with something like this:</p>
+
+<pre data-lang="css">
+@media (min--moz-device-pixel-ratio: 1), (-o-min-device-pixel-ratio: 1), (-webkit-min-device-pixel-ratio: 1), (min-device-pixel-ratio: 1), (min-resolution: 1dppx) {
+  .foo {
+    background-image: url("foo.png");
+  }
+}
+.no-mediaqueries .foo {
+  background-image: url("foo.png");
+}
+@media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+  .foo {
+    background-image: url("foo@2x.png");
+    background-size: "50%" "auto";
+  }
+}
+</pre>
+
+
+<p>Whether you can stand having that for every single use of the mixin is up to you. Gzipping will kill most of it but just keep that in mind.</p>
+
+    </div>
+    <section id="disqus_thread"></section>
+    <script type="text/javascript">
+        var disqus_shortname = 'anthonyshort';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</article>
+    
+
+    <footer>
+      <div>        
+        <p>
+          <a href="/about">About</a>.
+          <a href="http://twitter.com/anthonyshort">Twitter</a>. 
+          <a href="http://github.com/anthonyshort">Github</a>. 
+          <a href="mailto:anthony@anthonyshort.me">Email</a>.
+          <a href="http://feeds.feedburner.com/anthonyshort">RSS</a>.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+  <script src="/javascripts/prettify.js"></script>
+  <script>prettyPrint()</script>
+</html>
